@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">EcoSense</string>
+    <string name="perm_read_logs_label">Read EcoSense logs</string>
+    <string name="perm_read_logs_desc">Allows reading environmental logs recorded by EcoSense.</string>
+</resources>

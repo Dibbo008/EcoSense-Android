@@ -1,0 +1,42 @@
+[
+    {
+        "merged": "com.ecosense.app-debug-45:/drawable_ic_leaf.xml.flat",
+        "source": "com.ecosense.app-main-47:/drawable/ic_leaf.xml"
+    },
+    {
+        "merged": "com.ecosense.app-debug-45:/layout_activity_prediction.xml.flat",
+        "source": "com.ecosense.app-main-47:/layout/activity_prediction.xml"
+    },
+    {
+        "merged": "com.ecosense.app-debug-45:/drawable_ic_launcher.xml.flat",
+        "source": "com.ecosense.app-main-47:/drawable/ic_launcher.xml"
+    },
+    {
+        "merged": "com.ecosense.app-debug-45:/layout_activity_settings.xml.flat",
+        "source": "com.ecosense.app-main-47:/layout/activity_settings.xml"
+    },
+    {
+        "merged": "com.ecosense.app-debug-45:/layout_item_log.xml.flat",
+        "source": "com.ecosense.app-main-47:/layout/item_log.xml"
+    },
+    {
+        "merged": "com.ecosense.app-debug-45:/drawable_ic_back.xml.flat",
+        "source": "com.ecosense.app-main-47:/drawable/ic_back.xml"
+    },
+    {
+        "merged": "com.ecosense.app-debug-45:/layout_activity_history.xml.flat",
+        "source": "com.ecosense.app-main-47:/layout/activity_history.xml"
+    },
+    {
+        "merged": "com.ecosense.app-debug-45:/layout_item_log_grid.xml.flat",
+        "source": "com.ecosense.app-main-47:/layout/item_log_grid.xml"
+    },
+    {
+        "merged": "com.ecosense.app-debug-45:/layout_activity_dashboard.xml.flat",
+        "source": "com.ecosense.app-main-47:/layout/activity_dashboard.xml"
+    },
+    {
+        "merged": "com.ecosense.app-debug-45:/layout_activity_login.xml.flat",
+        "source": "com.ecosense.app-main-47:/layout/activity_login.xml"
+    }
+]

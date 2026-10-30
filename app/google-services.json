@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "55823835820",
+    "project_id": "ecosense-84536",
+    "storage_bucket": "ecosense-84536.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:55823835820:android:6a243d9a71569367c93509",
+        "android_client_info": {
+          "package_name": "com.ecosense.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6s3cHQUI4XYZwFTI8ocbILOjNM2XErBY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

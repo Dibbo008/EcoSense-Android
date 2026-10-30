@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="eco_alert">#D32F2F</color>
+    <color name="eco_bg">#F1F8E9</color>
+    <color name="eco_card">#FFFFFF</color>
+    <color name="eco_header">#2E7D32</color>
+    <color name="eco_on_primary">#FFFFFF</color>
+    <color name="eco_primary">#2E7D32</color>
+    <color name="eco_primary_dark">#1B5E20</color>
+    <color name="eco_safe">#2E7D32</color>
+    <color name="eco_secondary">#4CAF50</color>
+    <color name="eco_text">#1B2B1C</color>
+    <color name="eco_text_secondary">#5F6F60</color>
+    <color name="eco_warn">#F9A825</color>
+    <string name="app_name">EcoSense</string>
+    <string name="gcm_defaultSenderId" translatable="false">55823835820</string>
+    <string name="google_api_key" translatable="false">AIzaSyA6s3cHQUI4XYZwFTI8ocbILOjNM2XErBY</string>
+    <string name="google_app_id" translatable="false">1:55823835820:android:6a243d9a71569367c93509</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyA6s3cHQUI4XYZwFTI8ocbILOjNM2XErBY</string>
+    <string name="google_storage_bucket" translatable="false">ecosense-84536.firebasestorage.app</string>
+    <string name="perm_read_logs_desc">Allows reading environmental logs recorded by EcoSense.</string>
+    <string name="perm_read_logs_label">Read EcoSense logs</string>
+    <string name="project_id" translatable="false">ecosense-84536</string>
+    <style name="EcoCard" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardCornerRadius">16dp</item>
+        <item name="cardBackgroundColor">@color/eco_card</item>
+        <item name="cardElevation">2dp</item>
+    </style>
+    <style name="EcoLabel">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/eco_text_secondary</item>
+    </style>
+    <style name="EcoValue">
+        <item name="android:textSize">28sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/eco_text</item>
+    </style>
+    <style name="Theme.EcoSense" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/eco_primary</item>
+        <item name="colorOnPrimary">@color/eco_on_primary</item>
+        <item name="colorSecondary">@color/eco_secondary</item>
+        <item name="colorOnSecondary">@color/eco_on_primary</item>
+        <item name="android:colorBackground">@color/eco_bg</item>
+        <item name="colorSurface">@color/eco_card</item>
+        <item name="colorOnSurface">@color/eco_text</item>
+        <item name="colorOnBackground">@color/eco_text</item>
+        <item name="android:statusBarColor">@color/eco_primary_dark</item>
+    </style>
+</resources>

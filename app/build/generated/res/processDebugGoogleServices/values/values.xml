@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="gcm_defaultSenderId" translatable="false">55823835820</string>
+    <string name="google_api_key" translatable="false">AIzaSyA6s3cHQUI4XYZwFTI8ocbILOjNM2XErBY</string>
+    <string name="google_app_id" translatable="false">1:55823835820:android:6a243d9a71569367c93509</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyA6s3cHQUI4XYZwFTI8ocbILOjNM2XErBY</string>
+    <string name="google_storage_bucket" translatable="false">ecosense-84536.firebasestorage.app</string>
+    <string name="project_id" translatable="false">ecosense-84536</string>
+</resources>

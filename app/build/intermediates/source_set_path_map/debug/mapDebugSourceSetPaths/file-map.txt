@@ -1,0 +1,48 @@
+com.ecosense.app-lifecycle-viewmodel-release-0 C:\Users\MSI\.gradle\caches\8.9\transforms\062764554b62d393fce139293f1f5126\transformed\lifecycle-viewmodel-release\res
+com.ecosense.app-coordinatorlayout-1.1.0-1 C:\Users\MSI\.gradle\caches\8.9\transforms\0e77726ea2555ceec6be9bb5043ca837\transformed\coordinatorlayout-1.1.0\res
+com.ecosense.app-core-runtime-2.2.0-2 C:\Users\MSI\.gradle\caches\8.9\transforms\2dc212cba2a31f8fb70db43f771f87f8\transformed\core-runtime-2.2.0\res
+com.ecosense.app-core-1.13.0-3 C:\Users\MSI\.gradle\caches\8.9\transforms\32c5d5592cbced18c50b69bee66180ef\transformed\core-1.13.0\res
+com.ecosense.app-credentials-play-services-auth-1.2.0-rc01-4 C:\Users\MSI\.gradle\caches\8.9\transforms\385cd7415d27ed085299d87d96975d32\transformed\credentials-play-services-auth-1.2.0-rc01\res
+com.ecosense.app-customview-poolingcontainer-1.0.0-5 C:\Users\MSI\.gradle\caches\8.9\transforms\405c74230d8638b1a1c1fef76040e366\transformed\customview-poolingcontainer-1.0.0\res
+com.ecosense.app-startup-runtime-1.1.1-6 C:\Users\MSI\.gradle\caches\8.9\transforms\42cf72e3f5cc0b8badbf3c4c5950f2e3\transformed\startup-runtime-1.1.1\res
+com.ecosense.app-lifecycle-runtime-release-7 C:\Users\MSI\.gradle\caches\8.9\transforms\49d4b39d7b61caabdfdeb27d4ebc0771\transformed\lifecycle-runtime-release\res
+com.ecosense.app-play-services-basement-18.4.0-8 C:\Users\MSI\.gradle\caches\8.9\transforms\4a7a01def766002b35cc67c5dda6221d\transformed\play-services-basement-18.4.0\res
+com.ecosense.app-recyclerview-1.3.2-9 C:\Users\MSI\.gradle\caches\8.9\transforms\4bb40e09f728f543891128c13f9ee194\transformed\recyclerview-1.3.2\res
+com.ecosense.app-lifecycle-livedata-core-2.8.6-10 C:\Users\MSI\.gradle\caches\8.9\transforms\4fc0fcc5d43a843850f503ba2ae13385\transformed\lifecycle-livedata-core-2.8.6\res
+com.ecosense.app-constraintlayout-2.1.4-11 C:\Users\MSI\.gradle\caches\8.9\transforms\52b69afd36cf5a16a96f9d4b43888db8\transformed\constraintlayout-2.1.4\res
+com.ecosense.app-sqlite-framework-2.4.0-12 C:\Users\MSI\.gradle\caches\8.9\transforms\55fcdb8e26e9ab725533c1ae9464a448\transformed\sqlite-framework-2.4.0\res
+com.ecosense.app-lifecycle-viewmodel-savedstate-2.8.6-13 C:\Users\MSI\.gradle\caches\8.9\transforms\57e9efeab243a513386e711b7b97a640\transformed\lifecycle-viewmodel-savedstate-2.8.6\res
+com.ecosense.app-activity-1.8.0-14 C:\Users\MSI\.gradle\caches\8.9\transforms\5f5568d69db1cb0b559b4a48bf02ad17\transformed\activity-1.8.0\res
+com.ecosense.app-play-services-base-18.0.1-15 C:\Users\MSI\.gradle\caches\8.9\transforms\604c4310f8610f7027286daecb6cd922\transformed\play-services-base-18.0.1\res
+com.ecosense.app-core-ktx-1.13.0-16 C:\Users\MSI\.gradle\caches\8.9\transforms\65f663bd3eb72d32cf8045460f2fdb29\transformed\core-ktx-1.13.0\res
+com.ecosense.app-lifecycle-livedata-2.8.6-17 C:\Users\MSI\.gradle\caches\8.9\transforms\67beb2bf74b8c3ce95bed9323c79e118\transformed\lifecycle-livedata-2.8.6\res
+com.ecosense.app-transition-1.5.0-18 C:\Users\MSI\.gradle\caches\8.9\transforms\6d33bfc82c3806bdb68297e028880cbd\transformed\transition-1.5.0\res
+com.ecosense.app-cardview-1.0.0-19 C:\Users\MSI\.gradle\caches\8.9\transforms\77a733bcb0c5f0acd1891d9bb3a3ca38\transformed\cardview-1.0.0\res
+com.ecosense.app-emoji2-views-helper-1.3.0-20 C:\Users\MSI\.gradle\caches\8.9\transforms\7cc04141b6003b3d1a59c815efea4fab\transformed\emoji2-views-helper-1.3.0\res
+com.ecosense.app-emoji2-1.3.0-21 C:\Users\MSI\.gradle\caches\8.9\transforms\7e118b4916e44d2157efb301ee67e675\transformed\emoji2-1.3.0\res
+com.ecosense.app-material-1.12.0-22 C:\Users\MSI\.gradle\caches\8.9\transforms\81335119a568adab27dfc9fa2e61a412\transformed\material-1.12.0\res
+com.ecosense.app-lifecycle-livedata-core-ktx-2.8.6-23 C:\Users\MSI\.gradle\caches\8.9\transforms\84ec995f4a91735843a94e4361bba52e\transformed\lifecycle-livedata-core-ktx-2.8.6\res
+com.ecosense.app-appcompat-1.7.0-24 C:\Users\MSI\.gradle\caches\8.9\transforms\898b79dd632f89eb91b6f092b9b23fc3\transformed\appcompat-1.7.0\res
+com.ecosense.app-profileinstaller-1.3.1-25 C:\Users\MSI\.gradle\caches\8.9\transforms\94f7b935d80453d04a3684479eec3b26\transformed\profileinstaller-1.3.1\res
+com.ecosense.app-firebase-common-21.0.0-26 C:\Users\MSI\.gradle\caches\8.9\transforms\9833cb7cbb80b799dc6ddc3dfbfbf753\transformed\firebase-common-21.0.0\res
+com.ecosense.app-credentials-1.2.0-rc01-27 C:\Users\MSI\.gradle\caches\8.9\transforms\9a04cc05e5be319fb43b8757daab8800\transformed\credentials-1.2.0-rc01\res
+com.ecosense.app-drawerlayout-1.1.1-28 C:\Users\MSI\.gradle\caches\8.9\transforms\9bd428bc8c6ad1ca1c5fbedc57e22136\transformed\drawerlayout-1.1.1\res
+com.ecosense.app-lifecycle-process-2.8.6-29 C:\Users\MSI\.gradle\caches\8.9\transforms\9cdee8d32daffe6e788714670fb61eab\transformed\lifecycle-process-2.8.6\res
+com.ecosense.app-core-common-2.0.3-30 C:\Users\MSI\.gradle\caches\8.9\transforms\a2d42bd0f9ab392c19efc18203d73964\transformed\core-common-2.0.3\res
+com.ecosense.app-play-services-auth-20.7.0-31 C:\Users\MSI\.gradle\caches\8.9\transforms\a8eb111e3a33be0de9333e5559bd52b9\transformed\play-services-auth-20.7.0\res
+com.ecosense.app-appcompat-resources-1.7.0-32 C:\Users\MSI\.gradle\caches\8.9\transforms\bcde999739acd67bbdc189c1d95db50a\transformed\appcompat-resources-1.7.0\res
+com.ecosense.app-savedstate-1.2.1-33 C:\Users\MSI\.gradle\caches\8.9\transforms\c941385cd0a2a18ac3b3d4134480066d\transformed\savedstate-1.2.1\res
+com.ecosense.app-annotation-experimental-1.4.0-34 C:\Users\MSI\.gradle\caches\8.9\transforms\ccddafa61b331673f208709ebf6eeb75\transformed\annotation-experimental-1.4.0\res
+com.ecosense.app-room-runtime-2.6.1-35 C:\Users\MSI\.gradle\caches\8.9\transforms\e08619d4092094260edffe703558f147\transformed\room-runtime-2.6.1\res
+com.ecosense.app-viewpager2-1.1.0-beta02-36 C:\Users\MSI\.gradle\caches\8.9\transforms\f17f7bba310bb1daac5ce5cabcc4927d\transformed\viewpager2-1.1.0-beta02\res
+com.ecosense.app-fragment-1.5.4-37 C:\Users\MSI\.gradle\caches\8.9\transforms\f7b0b8e4826151d4f0fde7ece106bc6f\transformed\fragment-1.5.4\res
+com.ecosense.app-sqlite-2.4.0-38 C:\Users\MSI\.gradle\caches\8.9\transforms\f97bbcf290ed026a06d41939b0910eeb\transformed\sqlite-2.4.0\res
+com.ecosense.app-browser-1.4.0-39 C:\Users\MSI\.gradle\caches\8.9\transforms\ffa8e7d0ac45c1ad41d6e60831c2d363\transformed\browser-1.4.0\res
+com.ecosense.app-pngs-40 E:\4.TextDocs(CODINGS)\EcoSense (2.2 Android app)\app\build\generated\res\pngs\debug
+com.ecosense.app-res-41 E:\4.TextDocs(CODINGS)\EcoSense (2.2 Android app)\app\build\generated\res\processDebugGoogleServices
+com.ecosense.app-resValues-42 E:\4.TextDocs(CODINGS)\EcoSense (2.2 Android app)\app\build\generated\res\resValues\debug
+com.ecosense.app-packageDebugResources-43 E:\4.TextDocs(CODINGS)\EcoSense (2.2 Android app)\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
+com.ecosense.app-packageDebugResources-44 E:\4.TextDocs(CODINGS)\EcoSense (2.2 Android app)\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
+com.ecosense.app-debug-45 E:\4.TextDocs(CODINGS)\EcoSense (2.2 Android app)\app\build\intermediates\merged_res\debug\mergeDebugResources
+com.ecosense.app-debug-46 E:\4.TextDocs(CODINGS)\EcoSense (2.2 Android app)\app\src\debug\res
+com.ecosense.app-main-47 E:\4.TextDocs(CODINGS)\EcoSense (2.2 Android app)\app\src\main\res
