@@ -10,12 +10,23 @@
         <item name="colorOnSurface">@color/eco_text</item>
         <item name="colorOnBackground">@color/eco_text</item>
         <item name="android:statusBarColor">@color/eco_primary_dark</item>
+        <item name="android:windowAnimationStyle">@style/Animation.EcoActivity</item>
     </style>
 
-    <style name="EcoCard" parent="Widget.Material3.CardView.Elevated">
-        <item name="cardCornerRadius">16dp</item>
+    <style name="Animation.EcoActivity" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/slide_in_right</item>
+        <item name="android:activityOpenExitAnimation">@anim/slide_out_left</item>
+        <item name="android:activityCloseEnterAnimation">@anim/slide_in_left</item>
+        <item name="android:activityCloseExitAnimation">@anim/slide_out_right</item>
+    </style>
+
+    <!-- Flat outlined card with big rounded corners -->
+    <style name="EcoCard" parent="Widget.Material3.CardView.Outlined">
+        <item name="cardCornerRadius">20dp</item>
         <item name="cardBackgroundColor">@color/eco_card</item>
-        <item name="cardElevation">2dp</item>
+        <item name="cardElevation">0dp</item>
+        <item name="strokeColor">@color/eco_stroke</item>
+        <item name="strokeWidth">1dp</item>
     </style>
 
     <style name="EcoLabel">
@@ -26,6 +37,18 @@
     <style name="EcoValue">
         <item name="android:textSize">28sp</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
         <item name="android:textColor">@color/eco_text</item>
+    </style>
+
+    <style name="EcoSection">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textColor">@color/eco_primary</item>
+    </style>
+
+    <style name="EcoToolbarTitle" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
     </style>
 </resources>

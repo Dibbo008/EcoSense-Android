@@ -5,11 +5,21 @@
     <color name="eco_secondary">#4CAF50</color>
     <color name="eco_primary_dark">#1B5E20</color>
     <color name="eco_header">#2E7D32</color>
-    <color name="eco_bg">#F1F8E9</color>
+    <color name="eco_bg">#F3F8F1</color>
     <color name="eco_card">#FFFFFF</color>
     <color name="eco_text">#1B2B1C</color>
     <color name="eco_text_secondary">#5F6F60</color>
     <color name="eco_alert">#D32F2F</color>
     <color name="eco_safe">#2E7D32</color>
     <color name="eco_warn">#F9A825</color>
+
+    <!-- UI upgrade -->
+    <color name="eco_grad_start">#1B5E20</color>
+    <color name="eco_grad_end">#43A047</color>
+    <color name="eco_stroke">#E0EBDD</color>
+    <color name="tint_temp">#FFE6D2</color>
+    <color name="tint_hum">#D9ECFF</color>
+    <color name="tint_pm25">#F0E0F7</color>
+    <color name="tint_pm10">#E0EEDB</color>
+    <color name="tint_tip">#E6F4E2</color>
 </resources>
