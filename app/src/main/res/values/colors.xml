@@ -1,25 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="eco_primary">#2E7D32</color>
+    <color name="eco_primary">#1E6FE0</color>
     <color name="eco_on_primary">#FFFFFF</color>
-    <color name="eco_secondary">#4CAF50</color>
-    <color name="eco_primary_dark">#1B5E20</color>
-    <color name="eco_header">#2E7D32</color>
-    <color name="eco_bg">#F3F8F1</color>
+    <color name="eco_secondary">#3B9BF0</color>
+    <color name="eco_primary_dark">#1F6FD0</color>
+    <color name="eco_header">#2A7DE1</color>
+    <color name="eco_bg">#EAF1F8</color>
     <color name="eco_card">#FFFFFF</color>
-    <color name="eco_text">#1B2B1C</color>
-    <color name="eco_text_secondary">#5F6F60</color>
-    <color name="eco_alert">#D32F2F</color>
-    <color name="eco_safe">#2E7D32</color>
-    <color name="eco_warn">#F9A825</color>
+    <color name="eco_text">#0F172A</color>
+    <color name="eco_text_secondary">#64748B</color>
+    <color name="eco_alert">#E53935</color>
+    <color name="eco_safe">#16A34A</color>
+    <color name="eco_warn">#F59E0B</color>
+    <color name="eco_grad_start">#2A7DE1</color>
+    <color name="eco_grad_end">#6FB2F0</color>
+    <color name="eco_stroke">#E2E8F0</color>
+    <color name="eco_outline">#CBD5E1</color>
+    <color name="tint_temp">#FFE9D6</color>
+    <color name="tint_hum">#DCEBFF</color>
+    <color name="tint_pm25">#EFE3FA</color>
+    <color name="tint_pm10">#E1F3E6</color>
+    <color name="tint_tip">#E3F0FD</color>
 
-    <!-- UI upgrade -->
-    <color name="eco_grad_start">#1B5E20</color>
-    <color name="eco_grad_end">#43A047</color>
-    <color name="eco_stroke">#E0EBDD</color>
-    <color name="tint_temp">#FFE6D2</color>
-    <color name="tint_hum">#D9ECFF</color>
-    <color name="tint_pm25">#F0E0F7</color>
-    <color name="tint_pm10">#E0EEDB</color>
-    <color name="tint_tip">#E6F4E2</color>
+    <!-- Sky / glass design -->
+    <color name="eco_navy">#0F172A</color>
+    <color name="eco_on_navy">#FFFFFF</color>
+    <color name="sky_top">#2A7DE1</color>
+    <color name="sky_mid">#6FB2F0</color>
+    <color name="sky_bottom">#EAF1F8</color>
+    <color name="sky_warn">#FFE082</color>
+    <color name="eco_glass">#33FFFFFF</color>
+    <color name="eco_glass_stroke">#66FFFFFF</color>
+    <color name="eco_tile">#F1F5F9</color>
+    <color name="nav_inactive">#94A3B8</color>
 </resources>
