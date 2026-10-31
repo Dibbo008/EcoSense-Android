@@ -1,9 +1,11 @@
 package com.ecosense.app.ui.dashboard;
 
+import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -40,7 +42,7 @@ public class DashboardActivity extends AppCompatActivity {
     private static final String STATE_UPDATED = "state_updated";
 
     private TextView tvGreeting, tvUpdated, tvTemp, tvHumidity, tvPm25, tvPm10,
-            tvAqi, tvAqiLabel, tvTip, tvStatus;
+            tvAqi, tvAqiLabel, tvTip, tvStatus, tvLocation;
     private ProgressBar progress;
     private MaterialSwitch swMonitor;
     private EnvLog latest;
@@ -79,6 +81,9 @@ public class DashboardActivity extends AppCompatActivity {
         tvAqiLabel = findViewById(R.id.tvAqiLabel);
         tvTip = findViewById(R.id.tvTip);
         tvStatus = findViewById(R.id.tvStatus);
+        tvLocation = findViewById(R.id.tvLocation);
+        tvLocation.setOnClickListener(v -> openLocationInMaps());
+        updateLocationLabel();
         progress = findViewById(R.id.progress);
         swMonitor = findViewById(R.id.swMonitor);
 
@@ -124,6 +129,7 @@ public class DashboardActivity extends AppCompatActivity {
         super.onResume();
         tvGreeting.setText("Hello, " + displayName());
         swMonitor.setChecked(Prefs.get(this).isMonitoring());
+        updateLocationLabel();
         loadLatest();
         promptForPermissions();
     }
@@ -220,6 +226,7 @@ public class DashboardActivity extends AppCompatActivity {
 
     private void showLog(EnvLog l) {
         latest = l;
+        updateLocationLabel();
         Prefs p = Prefs.get(this);
         tvTemp.setText(LogFormatter.temp(l.temperature));
         tvHumidity.setText(LogFormatter.hum(l.humidity));
@@ -238,6 +245,26 @@ public class DashboardActivity extends AppCompatActivity {
         tv.setTextColor(ContextCompat.getColor(this, unsafe ? R.color.eco_alert : R.color.eco_text));
     }
 
+    private void updateLocationLabel() {
+        tvLocation.setText(Prefs.get(this).getLocationLabel());
+    }
+
+    /** Implicit intent: opens the data location in a maps app / browser. */
+    private void openLocationInMaps() {
+        Prefs p = Prefs.get(this);
+        if (!p.hasLocation()) {
+            Toast.makeText(this, "Tap Refresh to detect your location first.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        Uri uri = Uri.parse(String.format(Locale.US, "https://www.google.com/maps?q=%f,%f",
+                p.getLocationLat(), p.getLocationLon()));
+        try {
+            startActivity(new Intent(Intent.ACTION_VIEW, uri));
+        } catch (ActivityNotFoundException e) {
+            Toast.makeText(this, "No app available to open maps.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     /** Implicit intent: hands a text report to any app that can share text. */
     private void shareReport() {
         if (latest == null) {
@@ -245,8 +272,9 @@ public class DashboardActivity extends AppCompatActivity {
             return;
         }
         String body = String.format(Locale.US,
-                "EcoSense report (%s)\nTemperature: %.1f\u00B0C\nHumidity: %.0f%%\nPM2.5: %.1f\nPM10: %.1f\nAQI: %d (%s)",
-                LogFormatter.date(latest.timestamp), latest.temperature, latest.humidity,
+                "EcoSense report (%s)\nLocation: %s\nTemperature: %.1f\u00B0C\nHumidity: %.0f%%\nPM2.5: %.1f\nPM10: %.1f\nAQI: %d (%s)",
+                LogFormatter.date(latest.timestamp), Prefs.get(this).getLocationDisplay(),
+                latest.temperature, latest.humidity,
                 latest.pm25, latest.pm10, latest.aqi, LogFormatter.aqiLabel(latest.aqi));
         Intent send = new Intent(Intent.ACTION_SEND);
         send.setType("text/plain");

@@ -53,6 +53,23 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
+                    android:id="@+id/tvLocation"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:fontFamily="sans-serif-medium"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:text="📍 Detecting location…"
+                    android:textColor="@android:color/white"
+                    android:textSize="13sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvGreeting" />
+
+                <TextView
                     android:id="@+id/tvUpdated"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -62,7 +79,7 @@
                     android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvGreeting" />
+                    app:layout_constraintTop_toBottomOf="@id/tvLocation" />
 
                 <TextView
                     android:id="@+id/tvAqi"
