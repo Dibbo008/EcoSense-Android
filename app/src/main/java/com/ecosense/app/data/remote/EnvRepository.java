@@ -16,12 +16,12 @@ public final class EnvRepository {
 
     public static EnvLog fetchAndStore(Context context) throws IOException {
         Context app = context.getApplicationContext();
-        double[] loc = LocationHelper.getLocation(app);
+        LocationHelper.Located loc = LocationHelper.locate(app);
         WeatherApi api = ApiClient.getApi();
 
-        Response<WeatherResponse> w = api.getWeather(loc[0], loc[1],
+        Response<WeatherResponse> w = api.getWeather(loc.lat, loc.lon,
                 "temperature_2m,relative_humidity_2m").execute();
-        Response<AirQualityResponse> a = api.getAirQuality(loc[0], loc[1],
+        Response<AirQualityResponse> a = api.getAirQuality(loc.lat, loc.lon,
                 "pm10,pm2_5,us_aqi").execute();
 
         if (!w.isSuccessful() || w.body() == null || w.body().current == null) {
@@ -43,6 +43,7 @@ public final class EnvRepository {
         log.aqi = ac.usAqi != null ? (int) Math.round(ac.usAqi) : 0;
         log.synced = false;
         log.id = AppDatabase.getInstance(app).envLogDao().insert(log);
+        LocationHelper.updateSavedLocation(app, loc); // remember which place this data is for
         return log;
     }
 }
