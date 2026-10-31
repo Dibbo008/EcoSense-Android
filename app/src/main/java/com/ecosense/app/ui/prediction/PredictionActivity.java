@@ -11,6 +11,7 @@ import androidx.core.content.ContextCompat;
 import com.ecosense.app.R;
 import com.ecosense.app.data.local.AppDatabase;
 import com.ecosense.app.data.local.EnvLog;
+import com.ecosense.app.utils.NavHelper;
 import com.ecosense.app.utils.Prefs;
 import com.ecosense.app.utils.RegressionCalculator;
 import com.google.android.material.appbar.MaterialToolbar;
@@ -46,6 +47,7 @@ public class PredictionActivity extends AppCompatActivity {
 
         MaterialToolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setNavigationOnClickListener(v -> finish());
+        NavHelper.setup(this, NavHelper.PREDICT);
         chart = findViewById(R.id.chart);
         tvMetricName = findViewById(R.id.tvMetricName);
         tvLocation = findViewById(R.id.tvLocation);

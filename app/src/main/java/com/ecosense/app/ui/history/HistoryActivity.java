@@ -8,11 +8,8 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,9 +27,11 @@ import com.ecosense.app.data.remote.FirebaseHelper;
 import com.ecosense.app.utils.AlertChecker;
 import com.ecosense.app.utils.CsvExporter;
 import com.ecosense.app.utils.LogFormatter;
+import com.ecosense.app.utils.NavHelper;
 import com.ecosense.app.utils.PermissionHelper;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButtonToggleGroup;
+import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -48,7 +47,7 @@ public class HistoryActivity extends AppCompatActivity {
     private RecyclerView recycler;
     private TextView tvEmpty;
     private EditText etSearch;
-    private Spinner spFilter;
+    private ChipGroup chipFilter;
     private LogListAdapter listAdapter;
     private LogRecyclerAdapter recyclerAdapter;
     private final List<EnvLog> all = new ArrayList<>();
@@ -68,11 +67,12 @@ public class HistoryActivity extends AppCompatActivity {
         root = findViewById(R.id.root);
         MaterialToolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setNavigationOnClickListener(v -> finish());
+        NavHelper.setup(this, NavHelper.HISTORY);
         listView = findViewById(R.id.listView);
         recycler = findViewById(R.id.recycler);
         tvEmpty = findViewById(R.id.tvEmpty);
         etSearch = findViewById(R.id.etSearch);
-        spFilter = findViewById(R.id.spFilter);
+        chipFilter = findViewById(R.id.chipFilter);
 
         listAdapter = new LogListAdapter(this);
         listView.setAdapter(listAdapter);
@@ -86,19 +86,8 @@ public class HistoryActivity extends AppCompatActivity {
         recycler.setHasFixedSize(true);
         recycler.setAdapter(recyclerAdapter);
 
-        ArrayAdapter<String> filterAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, new String[]{"All readings", "Unsafe only", "Safe only"});
-        filterAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spFilter.setAdapter(filterAdapter);
-        spFilter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                applyFilter();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) { }
-        });
+        chipFilter.setOnCheckedStateChangeListener((group, ids) -> applyFilter());
+        chipFilter.check(R.id.chipAll);
 
         etSearch.addTextChangedListener(new TextWatcher() {
             @Override public void beforeTextChanged(CharSequence s, int a, int b, int c) { }
@@ -141,12 +130,14 @@ public class HistoryActivity extends AppCompatActivity {
 
     private void applyFilter() {
         String q = etSearch.getText().toString().trim().toLowerCase(Locale.getDefault());
-        int f = spFilter.getSelectedItemPosition();
+        int checked = chipFilter.getCheckedChipId();
+        boolean onlySafe = checked == R.id.chipSafe;
+        boolean onlyUnsafe = checked == R.id.chipUnsafe;
         List<EnvLog> out = new ArrayList<>();
         for (EnvLog l : all) {
             boolean unsafe = AlertChecker.isUnsafe(this, l);
-            if (f == 1 && !unsafe) continue;
-            if (f == 2 && unsafe) continue;
+            if (onlyUnsafe && !unsafe) continue;
+            if (onlySafe && unsafe) continue;
             if (!q.isEmpty() && !LogFormatter.searchText(l).contains(q)) continue;
             out.add(l);
         }

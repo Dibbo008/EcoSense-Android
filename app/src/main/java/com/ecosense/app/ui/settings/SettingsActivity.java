@@ -16,6 +16,7 @@ import com.ecosense.app.data.local.AppDatabase;
 import com.ecosense.app.data.remote.FirebaseHelper;
 import com.ecosense.app.service.MonitoringService;
 import com.ecosense.app.ui.auth.LoginActivity;
+import com.ecosense.app.utils.NavHelper;
 import com.ecosense.app.utils.PermissionHelper;
 import com.ecosense.app.utils.Prefs;
 import com.google.android.material.appbar.MaterialToolbar;
@@ -42,6 +43,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         MaterialToolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setNavigationOnClickListener(v -> finish());
+        NavHelper.setup(this, NavHelper.SETTINGS);
         etTemp = findViewById(R.id.etTemp);
         etHumidity = findViewById(R.id.etHumidity);
         etPm25 = findViewById(R.id.etPm25);
