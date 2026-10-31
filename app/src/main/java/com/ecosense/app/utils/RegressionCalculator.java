@@ -52,6 +52,17 @@ public class RegressionCalculator {
     public double getIntercept() { return intercept; }
     public double getRSquared() { return rSquared; }
 
+    /** Residual standard error: typical distance between the data and the fitted line. */
+    public double standardError(double[] x, double[] y) {
+        if (!fitted || x.length < 3) return 0;
+        double sse = 0;
+        for (int i = 0; i < x.length; i++) {
+            double r = y[i] - predict(x[i]);
+            sse += r * r;
+        }
+        return Math.sqrt(sse / (x.length - 2));
+    }
+
     /** Human-readable direction using a small dead-band. */
     public String trend(double epsilon) {
         if (slope > epsilon) return "Rising";

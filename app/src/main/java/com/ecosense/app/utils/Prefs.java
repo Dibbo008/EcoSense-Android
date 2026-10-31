@@ -49,4 +49,29 @@ public final class Prefs {
 
     public long getLastViewed() { return sp.getLong("last_viewed", 0L); }
     public void setLastViewed(long ts) { sp.edit().putLong("last_viewed", ts).apply(); }
+
+    // ---- Last known location used for the data (shown on dashboard / prediction) ----
+    public void saveLocation(double lat, double lon, String name, boolean isDefault) {
+        sp.edit().putFloat("loc_lat", (float) lat).putFloat("loc_lon", (float) lon)
+                .putString("loc_name", name).putBoolean("loc_default", isDefault).apply();
+    }
+
+    public boolean hasLocation() { return !getLocationName().isEmpty(); }
+    public String getLocationName() { return sp.getString("loc_name", ""); }
+    public boolean isLocationDefault() { return sp.getBoolean("loc_default", true); }
+    public float getLocationLat() { return sp.getFloat("loc_lat", 0f); }
+    public float getLocationLon() { return sp.getFloat("loc_lon", 0f); }
+
+    /** Text for the UI, e.g. "Khulna, Bangladesh" or "Khulna, Bangladesh (default)". */
+    public String getLocationDisplay() {
+        if (!hasLocation()) return "Unknown";
+        return getLocationName() + (isLocationDefault() ? " (default)" : "");
+    }
+
+    /** Label with pin icon for headers. */
+    public String getLocationLabel() {
+        if (!hasLocation()) return "\uD83D\uDCCD Location not detected yet";
+        return "\uD83D\uDCCD " + getLocationName()
+                + (isLocationDefault() ? " \u00B7 default location" : "");
+    }
 }
