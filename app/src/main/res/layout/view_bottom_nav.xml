@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Widget.Material3.CardView.Elevated"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/eco_card"
+    app:cardCornerRadius="34dp"
+    app:cardElevation="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/navHome"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_weight="1"
+            android:contentDescription="Home"
+            android:padding="14dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_home" />
+        <ImageView
+            android:id="@+id/navHistory"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_weight="1"
+            android:contentDescription="History"
+            android:padding="14dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_history" />
+        <ImageView
+            android:id="@+id/navPredict"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_weight="1"
+            android:contentDescription="Prediction"
+            android:padding="14dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_trend" />
+        <ImageView
+            android:id="@+id/navSettings"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_weight="1"
+            android:contentDescription="Settings"
+            android:padding="14dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_settings" />
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>
