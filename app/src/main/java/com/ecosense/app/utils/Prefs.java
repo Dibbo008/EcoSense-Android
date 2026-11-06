@@ -50,6 +50,14 @@ public final class Prefs {
     public long getLastViewed() { return sp.getLong("last_viewed", 0L); }
     public void setLastViewed(long ts) { sp.edit().putLong("last_viewed", ts).apply(); }
 
+    // ---- Health profile (AdvisorEngine.PROFILE_NAMES index) ----
+    public int getProfile() { return sp.getInt("profile", 0); }
+    public void setProfile(int p) { sp.edit().putInt("profile", p).apply(); }
+
+    // ---- Spike alert de-duplication ----
+    public long getLastSpikeAt() { return sp.getLong("last_spike", 0L); }
+    public void setLastSpikeAt(long ts) { sp.edit().putLong("last_spike", ts).apply(); }
+
     // ---- Last known location used for the data (shown on dashboard / prediction) ----
     public void saveLocation(double lat, double lon, String name, boolean isDefault) {
         sp.edit().putFloat("loc_lat", (float) lat).putFloat("loc_lon", (float) lon)

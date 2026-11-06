@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
 
+import com.ecosense.app.data.local.AppDatabase;
 import com.ecosense.app.data.local.EnvLog;
 import com.ecosense.app.service.AlertReceiver;
 
@@ -11,8 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-/** Compares a reading against the user's thresholds. */
+/** Compares readings against the user's limits and detects sudden spikes. */
 public final class AlertChecker {
+    private static final long SPIKE_COOLDOWN_MS = 3L * 3600_000L;
+
     private AlertChecker() {}
 
     public static boolean isUnsafe(Context c, EnvLog l) {
@@ -39,14 +42,39 @@ public final class AlertChecker {
         return out;
     }
 
-    /** Sends an explicit broadcast to AlertReceiver when any limit is exceeded. */
+    /**
+     * Sends notifications for exceeded limits and for sudden spikes.
+     * Does database work, so call it from a background thread only.
+     */
     public static void dispatch(Context c, EnvLog l) {
-        if (!Prefs.get(c).notificationsEnabled()) return;
+        Prefs p = Prefs.get(c);
+        if (!p.notificationsEnabled()) return;
+
         List<String> alerts = check(c, l);
-        if (alerts.isEmpty()) return;
+        if (!alerts.isEmpty()) {
+            send(c, "EcoSense alert: unsafe conditions", TextUtils.join("\n", alerts),
+                    NotificationHelper.ID_ALERT);
+        }
+
+        try {
+            List<EnvLog> recent = AppDatabase.getInstance(c).envLogDao().getRecent(15);
+            String spike = SpikeDetector.detect(recent, p.getProfile());
+            long now = System.currentTimeMillis();
+            if (spike != null && now - p.getLastSpikeAt() > SPIKE_COOLDOWN_MS) {
+                p.setLastSpikeAt(now);
+                send(c, "Sudden change detected", spike, NotificationHelper.ID_SPIKE);
+            }
+        } catch (Exception ignored) {
+            // Spike detection is best-effort and must never break the main flow
+        }
+    }
+
+    private static void send(Context c, String title, String message, int id) {
         Intent i = new Intent(c, AlertReceiver.class);
         i.setAction(AlertReceiver.ACTION_ALERT);
-        i.putExtra(AlertReceiver.EXTRA_MESSAGE, TextUtils.join("\n", alerts));
+        i.putExtra(AlertReceiver.EXTRA_MESSAGE, message);
+        i.putExtra(AlertReceiver.EXTRA_TITLE, title);
+        i.putExtra(AlertReceiver.EXTRA_ID, id);
         c.sendBroadcast(i);
     }
 }

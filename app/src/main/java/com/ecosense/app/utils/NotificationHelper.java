@@ -20,6 +20,7 @@ public final class NotificationHelper {
     public static final String CH_MONITOR = "eco_monitor";
     public static final int ID_MONITOR = 1001;
     public static final int ID_ALERT = 2001;
+    public static final int ID_SPIKE = 2002;
 
     private NotificationHelper() {}
 
@@ -55,8 +56,12 @@ public final class NotificationHelper {
                 .build();
     }
 
-    @SuppressLint("MissingPermission")
     public static void showAlert(Context c, String title, String text) {
+        showAlert(c, title, text, ID_ALERT);
+    }
+
+    @SuppressLint("MissingPermission")
+    public static void showAlert(Context c, String title, String text, int id) {
         if (!Prefs.get(c).notificationsEnabled() || !PermissionHelper.hasNotifications(c)) return;
         Notification n = new NotificationCompat.Builder(c, CH_ALERTS)
                 .setSmallIcon(R.drawable.ic_leaf)
@@ -67,6 +72,6 @@ public final class NotificationHelper {
                 .setAutoCancel(true)
                 .setContentIntent(openDashboard(c))
                 .build();
-        NotificationManagerCompat.from(c).notify(ID_ALERT, n);
+        NotificationManagerCompat.from(c).notify(id, n);
     }
 }

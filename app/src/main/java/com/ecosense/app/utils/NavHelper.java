@@ -14,7 +14,7 @@ import com.ecosense.app.ui.settings.SettingsActivity;
 
 /** Wires the floating bottom navigation pill (view_bottom_nav.xml) on each main screen. */
 public final class NavHelper {
-    public static final int HOME = 0, HISTORY = 1, PREDICT = 2, SETTINGS = 3;
+    public static final int NONE = -1, HOME = 0, HISTORY = 1, PREDICT = 2, SETTINGS = 3;
 
     private static final int[] IDS = {R.id.navHome, R.id.navHistory, R.id.navPredict, R.id.navSettings};
     private static final Class<?>[] TARGETS = {
