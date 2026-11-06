@@ -96,6 +96,89 @@
                             style="@style/EcoSection"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:text="🩺  Health profile" />
+
+                        <HorizontalScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:scrollbars="none">
+
+                            <com.google.android.material.chip.ChipGroup
+                                android:id="@+id/chipProfile"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:selectionRequired="true"
+                                app:singleLine="true"
+                                app:singleSelection="true">
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chipP0"
+                            style="@style/EcoChip"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Normal" />
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chipP1"
+                            style="@style/EcoChip"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Sensitive" />
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chipP2"
+                            style="@style/EcoChip"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Elderly" />
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chipP3"
+                            style="@style/EcoChip"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Child" />
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chipP4"
+                            style="@style/EcoChip"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Athlete" />
+                            </com.google.android.material.chip.ChipGroup>
+                        </HorizontalScrollView>
+
+                        <TextView
+                            android:id="@+id/tvProfileDesc"
+                            style="@style/EcoLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnApplyProfile"
+                            style="@style/Widget.Material3.Button.TonalButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="52dp"
+                            android:layout_marginTop="10dp"
+                            android:text="Use recommended alert limits"
+                            app:cornerRadius="26dp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/EcoCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="18dp">
+
+                        <TextView
+                            style="@style/EcoSection"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:text="⚠️  Alert thresholds" />
 
                     <com.google.android.material.textfield.TextInputLayout

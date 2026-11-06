@@ -353,6 +353,84 @@
                 android:paddingEnd="16dp">
 
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardPlan"
+                    style="@style/EcoCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="18dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    style="@style/EcoLabel"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="🧭  Today's Plan" />
+
+                                <TextView
+                                    android:id="@+id/tvPlanHeadline"
+                                    style="@style/EcoSection"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:text="Tap refresh to build your plan"
+                                    android:textSize="17sp" />
+                            </LinearLayout>
+
+                            <ImageView
+                                android:layout_width="42dp"
+                                android:layout_height="42dp"
+                                android:layout_marginStart="10dp"
+                                android:background="@drawable/bg_circle_tile"
+                                android:contentDescription="Open plan"
+                                android:padding="11dp"
+                                android:src="@drawable/ic_arrow_ne"
+                                app:tint="@color/eco_text" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tvPlanBest"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="sans-serif-medium"
+                            android:textColor="@color/eco_primary"
+                            android:textSize="14sp" />
+
+                        <HorizontalScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:scrollbars="none">
+
+                            <LinearLayout
+                                android:id="@+id/llPlanChips"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal" />
+                        </HorizontalScrollView>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
                     style="@style/EcoCard"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">

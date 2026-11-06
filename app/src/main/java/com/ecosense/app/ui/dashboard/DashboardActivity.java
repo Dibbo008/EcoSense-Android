@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -21,17 +22,23 @@ import androidx.core.content.ContextCompat;
 import com.ecosense.app.R;
 import com.ecosense.app.data.local.AppDatabase;
 import com.ecosense.app.data.local.EnvLog;
+import com.ecosense.app.data.local.ForecastCache;
+import com.ecosense.app.data.local.HourPoint;
 import com.ecosense.app.data.remote.EnvRepository;
+import com.ecosense.app.data.remote.ForecastRepository;
 import com.ecosense.app.service.MonitoringService;
 import com.ecosense.app.ui.auth.LoginActivity;
 import com.ecosense.app.ui.history.HistoryActivity;
+import com.ecosense.app.ui.plan.PlanActivity;
 import com.ecosense.app.ui.prediction.PredictionActivity;
+import com.ecosense.app.utils.AdvisorEngine;
 import com.ecosense.app.utils.AlertChecker;
 import com.ecosense.app.utils.EcoTips;
 import com.ecosense.app.utils.LogFormatter;
 import com.ecosense.app.utils.NavHelper;
 import com.ecosense.app.utils.PermissionHelper;
 import com.ecosense.app.utils.Prefs;
+import com.ecosense.app.utils.SpikeDetector;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.materialswitch.MaterialSwitch;
 import com.google.firebase.auth.FirebaseAuth;
@@ -48,7 +55,8 @@ public class DashboardActivity extends AppCompatActivity {
 
     private TextView tvGreeting, tvName, tvLocation, tvUpdated, tvTemp, tvHumidity, tvPm25, tvPm10,
             tvAqi, tvAqiLabel, tvTip, tvStatus, tvAlert, tvRecentEmpty;
-    private LinearLayout llRecent;
+    private LinearLayout llRecent, llPlanChips;
+    private TextView tvPlanHeadline, tvPlanBest;
     private ProgressBar progress;
     private MaterialSwitch swMonitor;
     private EnvLog latest;
@@ -93,6 +101,9 @@ public class DashboardActivity extends AppCompatActivity {
         tvAlert = findViewById(R.id.tvAlert);
         tvRecentEmpty = findViewById(R.id.tvRecentEmpty);
         llRecent = findViewById(R.id.llRecent);
+        llPlanChips = findViewById(R.id.llPlanChips);
+        tvPlanHeadline = findViewById(R.id.tvPlanHeadline);
+        tvPlanBest = findViewById(R.id.tvPlanBest);
         progress = findViewById(R.id.progress);
         swMonitor = findViewById(R.id.swMonitor);
 
@@ -110,6 +121,8 @@ public class DashboardActivity extends AppCompatActivity {
 
         findViewById(R.id.btnRefresh).setOnClickListener(v -> refresh());
         findViewById(R.id.btnShare).setOnClickListener(v -> shareReport());
+        findViewById(R.id.cardPlan).setOnClickListener(v ->
+                startActivity(new Intent(this, PlanActivity.class)));
         findViewById(R.id.cardPredict).setOnClickListener(v ->
                 startActivity(new Intent(this, PredictionActivity.class)));
         findViewById(R.id.cardHistory).setOnClickListener(v ->
@@ -217,7 +230,7 @@ public class DashboardActivity extends AppCompatActivity {
         final Context app = getApplicationContext();
         AppDatabase.IO.execute(() -> {
             EnvLog l = AppDatabase.getInstance(app).envLogDao().getLatest();
-            List<EnvLog> recent = AppDatabase.getInstance(app).envLogDao().getRecent(5);
+            List<EnvLog> recent = AppDatabase.getInstance(app).envLogDao().getRecent(15);
             runOnUiThread(() -> {
                 if (isDestroyed()) return;
                 if (l != null) showLog(l);
@@ -233,12 +246,17 @@ public class DashboardActivity extends AppCompatActivity {
             try {
                 EnvLog l = EnvRepository.fetchAndStore(app);
                 AlertChecker.dispatch(app, l);
-                List<EnvLog> recent = AppDatabase.getInstance(app).envLogDao().getRecent(5);
+                List<EnvLog> recent = AppDatabase.getInstance(app).envLogDao().getRecent(15);
                 runOnUiThread(() -> {
                     if (isDestroyed()) return;
                     progress.setVisibility(View.GONE);
                     showLog(l);
                     showRecent(recent);
+                });
+                // Warm the hourly forecast cache so "Today's Plan" has a best-time window
+                ForecastRepository.load(app, false);
+                runOnUiThread(() -> {
+                    if (!isDestroyed()) renderPlan();
                 });
             } catch (Exception e) {
                 runOnUiThread(() -> {
@@ -266,7 +284,6 @@ public class DashboardActivity extends AppCompatActivity {
         tint(tvPm25, l.pm25 > p.getMaxPm25());
         tint(tvPm10, l.pm10 > p.getMaxPm10());
         tint(tvTemp, l.temperature > p.getMaxTemp());
-        tvAlert.setVisibility(AlertChecker.isUnsafe(this, l) ? View.VISIBLE : View.GONE);
     }
 
     /** White text on the sky background; amber when a limit is exceeded. */
@@ -279,14 +296,73 @@ public class DashboardActivity extends AppCompatActivity {
     private void showRecent(List<EnvLog> list) {
         llRecent.removeAllViews();
         tvRecentEmpty.setVisibility(list == null || list.isEmpty() ? View.VISIBLE : View.GONE);
+        updateAlertChip(list);
+        renderPlan();
         if (list == null) return;
-        for (int i = 0; i < list.size(); i++) {
+        for (int i = 0; i < Math.min(5, list.size()); i++) {
             EnvLog l = list.get(i);
             View v = getLayoutInflater().inflate(R.layout.item_recent, llRecent, false);
             ((TextView) v.findViewById(R.id.tvRTime)).setText(i == 0 ? "Now" : hourFmt.format(new Date(l.timestamp)));
             ((TextView) v.findViewById(R.id.tvREmoji)).setText(emojiFor(l.aqi));
             ((TextView) v.findViewById(R.id.tvRTemp)).setText(String.format(Locale.US, "%.0f\u00B0", l.temperature));
             llRecent.addView(v);
+        }
+    }
+
+    /** Spike warning wins over the plain "above limits" warning. */
+    private void updateAlertChip(List<EnvLog> list) {
+        if (list == null || list.isEmpty()) {
+            tvAlert.setVisibility(View.GONE);
+            return;
+        }
+        String spike = SpikeDetector.detect(list, Prefs.get(this).getProfile());
+        if (spike != null) {
+            tvAlert.setText("\uD83D\uDCC8 " + spike);
+            tvAlert.setVisibility(View.VISIBLE);
+        } else if (AlertChecker.isUnsafe(this, list.get(0))) {
+            tvAlert.setText("\u26A0 Above your safe limits");
+            tvAlert.setVisibility(View.VISIBLE);
+        } else {
+            tvAlert.setVisibility(View.GONE);
+        }
+    }
+
+    /** "Today's Plan" card: headline, best window (from cached forecast) and activity chips. */
+    private void renderPlan() {
+        llPlanChips.removeAllViews();
+        if (latest == null) {
+            tvPlanHeadline.setText("Tap refresh to build your plan");
+            tvPlanBest.setText("");
+            return;
+        }
+        ForecastCache.Blob cache = ForecastCache.read(this);
+        List<HourPoint> pts = cache != null ? cache.points : null;
+        AdvisorEngine.Plan plan = AdvisorEngine.build(Prefs.get(this).getProfile(), latest, pts,
+                System.currentTimeMillis());
+        tvPlanHeadline.setText(plan.headline);
+        tvPlanBest.setText(plan.best != null
+                ? "\u2B50 Best time outside: " + AdvisorEngine.formatWindow(plan.best)
+                : "\u2B50 Open the plan to load the hourly forecast");
+
+        float d = getResources().getDisplayMetrics().density;
+        for (AdvisorEngine.Advice a : plan.advice) {
+            int color = ContextCompat.getColor(this, a.level == AdvisorEngine.OK ? R.color.eco_safe
+                    : a.level == AdvisorEngine.CAUTION ? R.color.eco_warn : R.color.eco_alert);
+            TextView chip = new TextView(this);
+            chip.setText(a.emoji + " " + a.shortLabel);
+            chip.setTextSize(12);
+            chip.setTextColor(ContextCompat.getColor(this, R.color.eco_text));
+            chip.setPadding(Math.round(12 * d), Math.round(6 * d), Math.round(12 * d), Math.round(6 * d));
+            GradientDrawable bg = new GradientDrawable();
+            bg.setShape(GradientDrawable.RECTANGLE);
+            bg.setCornerRadius(50 * d);
+            bg.setColor((color & 0x00FFFFFF) | 0x33000000);
+            bg.setStroke(Math.round(1.5f * d), color);
+            chip.setBackground(bg);
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            lp.setMarginEnd(Math.round(8 * d));
+            llPlanChips.addView(chip, lp);
         }
     }
 

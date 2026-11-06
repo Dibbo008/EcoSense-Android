@@ -16,10 +16,12 @@ import com.ecosense.app.data.local.AppDatabase;
 import com.ecosense.app.data.remote.FirebaseHelper;
 import com.ecosense.app.service.MonitoringService;
 import com.ecosense.app.ui.auth.LoginActivity;
+import com.ecosense.app.utils.AdvisorEngine;
 import com.ecosense.app.utils.NavHelper;
 import com.ecosense.app.utils.PermissionHelper;
 import com.ecosense.app.utils.Prefs;
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.materialswitch.MaterialSwitch;
 import com.google.android.material.textfield.TextInputEditText;
@@ -52,6 +54,24 @@ public class SettingsActivity extends AppCompatActivity {
         swNotifications = findViewById(R.id.swNotifications);
         swDark = findViewById(R.id.swDark);
         TextView tvAccount = findViewById(R.id.tvAccount);
+
+        // ---- health profile ----
+        final ChipGroup chipProfile = findViewById(R.id.chipProfile);
+        final TextView tvProfileDesc = findViewById(R.id.tvProfileDesc);
+        final int[] chipIds = {R.id.chipP0, R.id.chipP1, R.id.chipP2, R.id.chipP3, R.id.chipP4};
+        int savedProfile = AdvisorEngine.clampProfile(Prefs.get(this).getProfile());
+        tvProfileDesc.setText(AdvisorEngine.PROFILE_DESC[savedProfile]);
+        chipProfile.check(chipIds[savedProfile]);
+        chipProfile.setOnCheckedStateChangeListener((group, ids) -> {
+            if (ids.isEmpty()) return;
+            for (int i = 0; i < chipIds.length; i++) {
+                if (chipIds[i] == ids.get(0)) {
+                    Prefs.get(this).setProfile(i);
+                    tvProfileDesc.setText(AdvisorEngine.PROFILE_DESC[i]);
+                }
+            }
+        });
+        findViewById(R.id.btnApplyProfile).setOnClickListener(v -> applyProfileLimits());
 
         Prefs p = Prefs.get(this);
         etTemp.setText(fmt(p.getMaxTemp()));
@@ -91,6 +111,19 @@ public class SettingsActivity extends AppCompatActivity {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://open-meteo.com")));
         });
         findViewById(R.id.btnLogout).setOnClickListener(v -> logout());
+    }
+
+    /** Fills the alert limits with values recommended for the selected health profile. */
+    private void applyProfileLimits() {
+        Prefs p = Prefs.get(this);
+        float[] lim = AdvisorEngine.recommendedLimits(p.getProfile());
+        p.saveThresholds(lim[0], p.getMaxHumidity(), lim[1], lim[2], p.getIntervalMinutes());
+        etTemp.setText(fmt(lim[0]));
+        etPm25.setText(fmt(lim[1]));
+        etPm10.setText(fmt(lim[2]));
+        Toast.makeText(this, "Alert limits set for the "
+                + AdvisorEngine.PROFILE_NAMES[AdvisorEngine.clampProfile(p.getProfile())]
+                + " profile.", Toast.LENGTH_SHORT).show();
     }
 
     private static String fmt(float v) {
