@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="52dp"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvHAqi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/eco_text_secondary"
+        android:textSize="11sp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="104dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp">
+
+        <View
+            android:id="@+id/vBar"
+            android:layout_width="20dp"
+            android:layout_height="40dp"
+            android:layout_gravity="bottom|center_horizontal" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tvHTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/eco_text"
+        android:textSize="10sp" />
+</LinearLayout>
