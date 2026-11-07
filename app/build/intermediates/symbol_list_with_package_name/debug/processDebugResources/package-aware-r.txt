@@ -3049,6 +3049,8 @@ drawable abc_textfield_search_material
 drawable abc_vector_test
 drawable avd_hide_password
 drawable avd_show_password
+drawable bg_bubble_bot
+drawable bg_bubble_user
 drawable bg_chip_alert
 drawable bg_chip_white
 drawable bg_circle
@@ -3319,6 +3321,7 @@ id browser_actions_menu_items
 id browser_actions_menu_view
 id btnApplyProfile
 id btnClear
+id btnClearChat
 id btnExport
 id btnExportSymptoms
 id btnGuest
@@ -3333,6 +3336,7 @@ id btnRefresh
 id btnReset
 id btnRestore
 id btnSave
+id btnSend
 id btnShare
 id btnSignup
 id btnSource
@@ -3341,11 +3345,13 @@ id buttonPanel
 id cache_measures
 id callMeasure
 id cancel_button
+id cardChat
 id cardForm
 id cardPlan
 id cardRisk
 id cardSymptom
 id carryVelocity
+id cbDiary
 id center
 id centerCrop
 id centerInside
@@ -3456,6 +3462,7 @@ id escape
 id etEmail
 id etHumidity
 id etInterval
+id etMsg
 id etNote
 id etPassword
 id etPm10
@@ -3537,7 +3544,9 @@ id llForecast
 id llHeading
 id llHours
 id llInsights
+id llMode
 id llPlanChips
+id llQuick
 id llRecent
 id llSeverity
 id m3_side_sheet
@@ -3645,6 +3654,7 @@ id outline
 id outward
 id overshoot
 id packed
+id panel
 id parallax
 id parent
 id parentPanel
@@ -3683,7 +3693,9 @@ id right_icon
 id right_side
 id root
 id rounded
+id rowInput
 id row_index_key
+id rvChat
 id save_non_transition_alpha
 id save_overlay_view
 id sawtooth
@@ -3811,6 +3823,8 @@ id tvAqi
 id tvAqiLabel
 id tvBestSub
 id tvBestTime
+id tvBubble
+id tvChatEmpty
 id tvCurrent
 id tvDate
 id tvEmpty
@@ -3831,6 +3845,7 @@ id tvInsight
 id tvInsightNote
 id tvLocation
 id tvMetricName
+id tvMode
 id tvName
 id tvNext
 id tvPHeadline
@@ -3844,6 +3859,7 @@ id tvPm25
 id tvPoints
 id tvPointsLabel
 id tvProfileDesc
+id tvPrompt
 id tvREmoji
 id tvRTemp
 id tvRTime
@@ -4006,6 +4022,7 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_chat
 layout activity_dashboard
 layout activity_history
 layout activity_login
@@ -4034,6 +4051,9 @@ layout design_text_input_start_icon
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
 layout item_advice
+layout item_chat
+layout item_chat_action
+layout item_chat_choice
 layout item_forecast
 layout item_hour
 layout item_insight
@@ -4181,6 +4201,7 @@ string fab_transformation_sheet_behavior
 string fallback_menu_item_copy_link
 string fallback_menu_item_open_in_browser
 string fallback_menu_item_share_link
+string firebase_database_url
 string gcm_defaultSenderId
 string google_api_key
 string google_app_id

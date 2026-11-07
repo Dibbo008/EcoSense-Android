@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="eco_alert">#E53935</color>
+    <color name="eco_bg">#EAF1F8</color>
+    <color name="eco_card">#FFFFFF</color>
+    <color name="eco_glass">#33FFFFFF</color>
+    <color name="eco_glass_stroke">#66FFFFFF</color>
+    <color name="eco_grad_end">#6FB2F0</color>
+    <color name="eco_grad_start">#2A7DE1</color>
+    <color name="eco_header">#2A7DE1</color>
+    <color name="eco_navy">#0F172A</color>
+    <color name="eco_on_navy">#FFFFFF</color>
+    <color name="eco_on_primary">#FFFFFF</color>
+    <color name="eco_outline">#CBD5E1</color>
+    <color name="eco_primary">#1E6FE0</color>
+    <color name="eco_primary_dark">#1F6FD0</color>
+    <color name="eco_safe">#16A34A</color>
+    <color name="eco_secondary">#3B9BF0</color>
+    <color name="eco_stroke">#E2E8F0</color>
+    <color name="eco_text">#0F172A</color>
+    <color name="eco_text_secondary">#64748B</color>
+    <color name="eco_tile">#F1F5F9</color>
+    <color name="eco_warn">#F59E0B</color>
+    <color name="nav_inactive">#94A3B8</color>
+    <color name="sky_bottom">#EAF1F8</color>
+    <color name="sky_mid">#6FB2F0</color>
+    <color name="sky_top">#2A7DE1</color>
+    <color name="sky_warn">#FFE082</color>
+    <color name="tint_hum">#DCEBFF</color>
+    <color name="tint_pm10">#E1F3E6</color>
+    <color name="tint_pm25">#EFE3FA</color>
+    <color name="tint_temp">#FFE9D6</color>
+    <color name="tint_tip">#E3F0FD</color>
+    <string name="app_name">EcoSense</string>
+    <string name="firebase_database_url" translatable="false">https://ecosense-84536-default-rtdb.asia-southeast1.firebasedatabase.app</string>
+    <string name="gcm_defaultSenderId" translatable="false">55823835820</string>
+    <string name="google_api_key" translatable="false">AIzaSyA6s3cHQUI4XYZwFTI8ocbILOjNM2XErBY</string>
+    <string name="google_app_id" translatable="false">1:55823835820:android:6a243d9a71569367c93509</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyA6s3cHQUI4XYZwFTI8ocbILOjNM2XErBY</string>
+    <string name="google_storage_bucket" translatable="false">ecosense-84536.firebasestorage.app</string>
+    <string name="perm_read_logs_desc">Allows reading environmental logs recorded by EcoSense.</string>
+    <string name="perm_read_logs_label">Read EcoSense logs</string>
+    <string name="project_id" translatable="false">ecosense-84536</string>
+    <style name="Animation.EcoActivity" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/slide_in_right</item>
+        <item name="android:activityOpenExitAnimation">@anim/slide_out_left</item>
+        <item name="android:activityCloseEnterAnimation">@anim/slide_in_left</item>
+        <item name="android:activityCloseExitAnimation">@anim/slide_out_right</item>
+    </style>
+    <style name="EcoCard" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardCornerRadius">24dp</item>
+        <item name="cardBackgroundColor">@color/eco_card</item>
+        <item name="cardElevation">0dp</item>
+        <item name="strokeWidth">0dp</item>
+    </style>
+    <style name="EcoChip" parent="Widget.Material3.Chip.Filter">
+        <item name="chipBackgroundColor">@color/chip_bg</item>
+        <item name="android:textColor">@color/chip_text</item>
+        <item name="chipStrokeWidth">0dp</item>
+        <item name="chipCornerRadius">22dp</item>
+        <item name="chipMinHeight">44dp</item>
+        <item name="checkedIconVisible">false</item>
+        <item name="chipIconVisible">false</item>
+        <item name="chipStartPadding">10dp</item>
+        <item name="chipEndPadding">10dp</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="EcoLabel">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/eco_text_secondary</item>
+    </style>
+    <style name="EcoSection">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textColor">@color/eco_text</item>
+    </style>
+    <style name="EcoToolbarTitle" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    <style name="EcoValue">
+        <item name="android:textSize">28sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textColor">@color/eco_text</item>
+    </style>
+    <style name="Theme.EcoSense" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/eco_navy</item>
+        <item name="colorOnPrimary">@color/eco_on_navy</item>
+        <item name="colorPrimaryContainer">@color/tint_hum</item>
+        <item name="colorOnPrimaryContainer">@color/eco_text</item>
+        <item name="colorSecondary">@color/eco_primary</item>
+        <item name="colorOnSecondary">@color/eco_on_primary</item>
+        <item name="colorSecondaryContainer">@color/tint_hum</item>
+        <item name="colorOnSecondaryContainer">@color/eco_text</item>
+        <item name="android:colorBackground">@color/eco_bg</item>
+        <item name="colorSurface">@color/eco_card</item>
+        <item name="colorOnSurface">@color/eco_text</item>
+        <item name="colorOnBackground">@color/eco_text</item>
+        <item name="colorSurfaceVariant">@color/eco_tile</item>
+        <item name="colorOnSurfaceVariant">@color/eco_text_secondary</item>
+        <item name="colorOutline">@color/eco_outline</item>
+        <item name="android:statusBarColor">@color/sky_top</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowAnimationStyle">@style/Animation.EcoActivity</item>
+    </style>
+</resources>

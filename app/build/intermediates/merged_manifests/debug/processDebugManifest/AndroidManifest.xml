@@ -79,6 +79,11 @@
             android:name="com.ecosense.app.ui.symptom.SymptomActivity"
             android:exported="false"
             android:parentActivityName="com.ecosense.app.ui.dashboard.DashboardActivity" />
+        <activity
+            android:name="com.ecosense.app.ui.symptom.ChatActivity"
+            android:exported="false"
+            android:parentActivityName="com.ecosense.app.ui.symptom.SymptomActivity"
+            android:windowSoftInputMode="adjustResize" />
 
         <service
             android:name="com.ecosense.app.service.MonitoringService"
@@ -144,6 +149,12 @@
                 android:value="com.google.firebase.components.ComponentRegistrar" />
             <meta-data
                 android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.database.FirebaseDatabaseKtxRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
                 android:value="com.google.firebase.components.ComponentRegistrar" />
             <meta-data
                 android:name="com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonLegacyRegistrar"

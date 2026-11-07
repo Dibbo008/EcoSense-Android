@@ -90,6 +90,66 @@
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp">
 
+                <!-- CHAT ENTRY -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardChat"
+                    style="@style/EcoCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="18dp">
+
+                        <TextView
+                            android:layout_width="46dp"
+                            android:layout_height="46dp"
+                            android:background="@drawable/bg_circle_tile"
+                            android:gravity="center"
+                            android:text="💬"
+                            android:textSize="20sp" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="14dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/EcoSection"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Not feeling well?"
+                                android:textSize="17sp" />
+
+                            <TextView
+                                style="@style/EcoLabel"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="Chat to learn what's happening, why, and what to do."
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="42dp"
+                            android:layout_height="42dp"
+                            android:layout_marginStart="8dp"
+                            android:background="@drawable/bg_circle_tile"
+                            android:contentDescription="Open chat"
+                            android:padding="11dp"
+                            android:src="@drawable/ic_arrow_ne"
+                            app:tint="@color/eco_text" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
                 <!-- LOG CARD -->
                 <com.google.android.material.card.MaterialCardView
                     style="@style/EcoCard"

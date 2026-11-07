@@ -41,6 +41,8 @@ color tint_pm10
 color tint_pm25
 color tint_temp
 color tint_tip
+drawable bg_bubble_bot
+drawable bg_bubble_user
 drawable bg_chip_alert
 drawable bg_chip_white
 drawable bg_circle
@@ -75,6 +77,7 @@ id aqiGauge
 id bottomNav
 id btnApplyProfile
 id btnClear
+id btnClearChat
 id btnExport
 id btnExportSymptoms
 id btnGuest
@@ -89,14 +92,17 @@ id btnRefresh
 id btnReset
 id btnRestore
 id btnSave
+id btnSend
 id btnShare
 id btnSignup
 id btnSource
 id btnSync
+id cardChat
 id cardForm
 id cardPlan
 id cardRisk
 id cardSymptom
+id cbDiary
 id chart
 id chipAll
 id chipFilter
@@ -129,6 +135,7 @@ id chipUnsafe
 id etEmail
 id etHumidity
 id etInterval
+id etMsg
 id etNote
 id etPassword
 id etPm10
@@ -146,7 +153,9 @@ id llForecast
 id llHeading
 id llHours
 id llInsights
+id llMode
 id llPlanChips
+id llQuick
 id llRecent
 id llSeverity
 id navHistory
@@ -155,6 +164,7 @@ id navPlan
 id navPredict
 id navSettings
 id navSymptom
+id panel
 id pbF
 id pbSymptom
 id pbUnlock
@@ -166,6 +176,8 @@ id qlFine
 id qlHeadache
 id recycler
 id root
+id rowInput
+id rvChat
 id swDark
 id swMonitor
 id swNotifications
@@ -183,6 +195,8 @@ id tvAqi
 id tvAqiLabel
 id tvBestSub
 id tvBestTime
+id tvBubble
+id tvChatEmpty
 id tvCurrent
 id tvDate
 id tvEmpty
@@ -203,6 +217,7 @@ id tvInsight
 id tvInsightNote
 id tvLocation
 id tvMetricName
+id tvMode
 id tvName
 id tvNext
 id tvPHeadline
@@ -216,6 +231,7 @@ id tvPm25
 id tvPoints
 id tvPointsLabel
 id tvProfileDesc
+id tvPrompt
 id tvREmoji
 id tvRTemp
 id tvRTime
@@ -239,6 +255,7 @@ id tvUnlock
 id tvUpdated
 id tvWorst
 id vBar
+layout activity_chat
 layout activity_dashboard
 layout activity_history
 layout activity_login
@@ -247,6 +264,9 @@ layout activity_prediction
 layout activity_settings
 layout activity_symptom
 layout item_advice
+layout item_chat
+layout item_chat_action
+layout item_chat_choice
 layout item_forecast
 layout item_hour
 layout item_insight
@@ -256,6 +276,7 @@ layout item_recent
 layout item_symptom
 layout view_bottom_nav
 string app_name
+string firebase_database_url
 string gcm_defaultSenderId
 string google_api_key
 string google_app_id
