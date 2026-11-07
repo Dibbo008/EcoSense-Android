@@ -11,4 +11,5 @@
         </shape>
     </item>
     <item android:drawable="@drawable/ic_clouds" android:gravity="top|fill_horizontal" />
+    <item android:drawable="@drawable/ic_mountains" android:gravity="bottom|fill_horizontal" />
 </layer-list>
