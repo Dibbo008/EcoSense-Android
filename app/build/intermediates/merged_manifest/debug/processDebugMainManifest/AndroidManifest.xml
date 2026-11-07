@@ -71,6 +71,14 @@
             android:name="com.ecosense.app.ui.settings.SettingsActivity"
             android:exported="false"
             android:parentActivityName="com.ecosense.app.ui.dashboard.DashboardActivity" />
+        <activity
+            android:name="com.ecosense.app.ui.plan.PlanActivity"
+            android:exported="false"
+            android:parentActivityName="com.ecosense.app.ui.dashboard.DashboardActivity" />
+        <activity
+            android:name="com.ecosense.app.ui.symptom.SymptomActivity"
+            android:exported="false"
+            android:parentActivityName="com.ecosense.app.ui.dashboard.DashboardActivity" />
 
         <service
             android:name="com.ecosense.app.service.MonitoringService"

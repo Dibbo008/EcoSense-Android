@@ -1,0 +1,13 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="360dp" android:height="130dp"
+    android:viewportWidth="360" android:viewportHeight="130">
+    <!-- far ridge -->
+    <path android:fillColor="#2A7DE1" android:fillAlpha="0.14"
+        android:pathData="M0,130 L0,78 L34,58 L62,74 L104,30 L140,66 L176,46 L214,76 L256,34 L296,70 L330,52 L360,66 L360,130 Z" />
+    <!-- middle ridge with snow-cap feel -->
+    <path android:fillColor="#1E5FA8" android:fillAlpha="0.18"
+        android:pathData="M0,130 L0,96 L48,72 L84,94 L132,58 L176,92 L224,66 L268,98 L312,74 L360,96 L360,130 Z" />
+    <!-- near ridge -->
+    <path android:fillColor="#14437F" android:fillAlpha="0.16"
+        android:pathData="M0,130 L0,110 L56,92 L110,112 L170,86 L230,112 L290,94 L360,110 L360,130 Z" />
+</vector>

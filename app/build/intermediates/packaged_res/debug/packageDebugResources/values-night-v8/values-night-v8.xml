@@ -1,15 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="eco_alert">#EF5350</color>
-    <color name="eco_bg">#0E1710</color>
-    <color name="eco_card">#1A271B</color>
-    <color name="eco_header">#1B5E20</color>
-    <color name="eco_on_primary">#0B1F0C</color>
-    <color name="eco_primary">#66BB6A</color>
-    <color name="eco_primary_dark">#0B1F0C</color>
-    <color name="eco_safe">#81C784</color>
-    <color name="eco_secondary">#81C784</color>
-    <color name="eco_text">#E6F0E6</color>
-    <color name="eco_text_secondary">#A5B5A6</color>
+    <color name="eco_bg">#0B1220</color>
+    <color name="eco_card">#131C2E</color>
+    <color name="eco_glass">#26FFFFFF</color>
+    <color name="eco_glass_stroke">#40FFFFFF</color>
+    <color name="eco_grad_end">#1E5FA8</color>
+    <color name="eco_grad_start">#0A2A5C</color>
+    <color name="eco_header">#14437F</color>
+    <color name="eco_navy">#E2E8F0</color>
+    <color name="eco_on_navy">#0B1220</color>
+    <color name="eco_on_primary">#0B1220</color>
+    <color name="eco_outline">#334155</color>
+    <color name="eco_primary">#5AA2F5</color>
+    <color name="eco_primary_dark">#0A2A5C</color>
+    <color name="eco_safe">#4ADE80</color>
+    <color name="eco_secondary">#7DB8F8</color>
+    <color name="eco_stroke">#1F2A3F</color>
+    <color name="eco_text">#E8EEF7</color>
+    <color name="eco_text_secondary">#94A3B8</color>
+    <color name="eco_tile">#1B2740</color>
     <color name="eco_warn">#FFCA28</color>
+    <color name="nav_inactive">#64748B</color>
+    <color name="sky_bottom">#0B1220</color>
+    <color name="sky_mid">#14437F</color>
+    <color name="sky_top">#0A2A5C</color>
+    <color name="sky_warn">#FFE082</color>
+    <color name="tint_hum">#14304F</color>
+    <color name="tint_pm10">#1C3A2A</color>
+    <color name="tint_pm25">#35244A</color>
+    <color name="tint_temp">#4A2E1A</color>
+    <color name="tint_tip">#132A47</color>
 </resources>

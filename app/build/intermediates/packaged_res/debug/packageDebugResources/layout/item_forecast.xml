@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp">
+
+    <TextView
+        android:id="@+id/tvFTime"
+        android:layout_width="86dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/eco_text_secondary"
+        android:textSize="12sp" />
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/pbF"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        app:trackColor="@color/eco_stroke"
+        app:trackCornerRadius="6dp"
+        app:trackThickness="10dp" />
+
+    <TextView
+        android:id="@+id/tvFVal"
+        android:layout_width="72dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="end"
+        android:textColor="@color/eco_text"
+        android:textSize="13sp" />
+</LinearLayout>

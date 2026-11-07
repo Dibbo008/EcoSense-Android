@@ -28,20 +28,24 @@ import javax.annotation.processing.Generated;
 public final class AppDatabase_Impl extends AppDatabase {
   private volatile EnvLogDao _envLogDao;
 
+  private volatile SymptomDao _symptomDao;
+
   @Override
   @NonNull
   protected SupportSQLiteOpenHelper createOpenHelper(@NonNull final DatabaseConfiguration config) {
-    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(config, new RoomOpenHelper.Delegate(1) {
+    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(config, new RoomOpenHelper.Delegate(2) {
       @Override
       public void createAllTables(@NonNull final SupportSQLiteDatabase db) {
         db.execSQL("CREATE TABLE IF NOT EXISTS `env_logs` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `timestamp` INTEGER NOT NULL, `temperature` REAL NOT NULL, `humidity` REAL NOT NULL, `pm25` REAL NOT NULL, `pm10` REAL NOT NULL, `aqi` INTEGER NOT NULL, `synced` INTEGER NOT NULL, `source` TEXT NOT NULL)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS `symptom_entries` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `timestamp` INTEGER NOT NULL, `type` INTEGER NOT NULL, `severity` INTEGER NOT NULL, `note` TEXT NOT NULL, `aqi` INTEGER NOT NULL, `pm25` REAL NOT NULL, `temperature` REAL NOT NULL, `humidity` REAL NOT NULL)");
         db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '9049e524c927add9d4aaac9f8c23627e')");
+        db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'b144963125094bd80a46af52f98dfc53')");
       }
 
       @Override
       public void dropAllTables(@NonNull final SupportSQLiteDatabase db) {
         db.execSQL("DROP TABLE IF EXISTS `env_logs`");
+        db.execSQL("DROP TABLE IF EXISTS `symptom_entries`");
         final List<? extends RoomDatabase.Callback> _callbacks = mCallbacks;
         if (_callbacks != null) {
           for (RoomDatabase.Callback _callback : _callbacks) {
@@ -104,9 +108,28 @@ public final class AppDatabase_Impl extends AppDatabase {
                   + " Expected:\n" + _infoEnvLogs + "\n"
                   + " Found:\n" + _existingEnvLogs);
         }
+        final HashMap<String, TableInfo.Column> _columnsSymptomEntries = new HashMap<String, TableInfo.Column>(9);
+        _columnsSymptomEntries.put("id", new TableInfo.Column("id", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsSymptomEntries.put("timestamp", new TableInfo.Column("timestamp", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsSymptomEntries.put("type", new TableInfo.Column("type", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsSymptomEntries.put("severity", new TableInfo.Column("severity", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsSymptomEntries.put("note", new TableInfo.Column("note", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsSymptomEntries.put("aqi", new TableInfo.Column("aqi", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsSymptomEntries.put("pm25", new TableInfo.Column("pm25", "REAL", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsSymptomEntries.put("temperature", new TableInfo.Column("temperature", "REAL", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsSymptomEntries.put("humidity", new TableInfo.Column("humidity", "REAL", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        final HashSet<TableInfo.ForeignKey> _foreignKeysSymptomEntries = new HashSet<TableInfo.ForeignKey>(0);
+        final HashSet<TableInfo.Index> _indicesSymptomEntries = new HashSet<TableInfo.Index>(0);
+        final TableInfo _infoSymptomEntries = new TableInfo("symptom_entries", _columnsSymptomEntries, _foreignKeysSymptomEntries, _indicesSymptomEntries);
+        final TableInfo _existingSymptomEntries = TableInfo.read(db, "symptom_entries");
+        if (!_infoSymptomEntries.equals(_existingSymptomEntries)) {
+          return new RoomOpenHelper.ValidationResult(false, "symptom_entries(com.ecosense.app.data.local.SymptomEntry).\n"
+                  + " Expected:\n" + _infoSymptomEntries + "\n"
+                  + " Found:\n" + _existingSymptomEntries);
+        }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
-    }, "9049e524c927add9d4aaac9f8c23627e", "c7176998a9986a0199f5d6bef9b13715");
+    }, "b144963125094bd80a46af52f98dfc53", "907af48679cbc1ce81618ee34d0b9961");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(config.context).name(config.name).callback(_openCallback).build();
     final SupportSQLiteOpenHelper _helper = config.sqliteOpenHelperFactory.create(_sqliteConfig);
     return _helper;
@@ -117,7 +140,7 @@ public final class AppDatabase_Impl extends AppDatabase {
   protected InvalidationTracker createInvalidationTracker() {
     final HashMap<String, String> _shadowTablesMap = new HashMap<String, String>(0);
     final HashMap<String, Set<String>> _viewTables = new HashMap<String, Set<String>>(0);
-    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "env_logs");
+    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "env_logs","symptom_entries");
   }
 
   @Override
@@ -127,6 +150,7 @@ public final class AppDatabase_Impl extends AppDatabase {
     try {
       super.beginTransaction();
       _db.execSQL("DELETE FROM `env_logs`");
+      _db.execSQL("DELETE FROM `symptom_entries`");
       super.setTransactionSuccessful();
     } finally {
       super.endTransaction();
@@ -142,6 +166,7 @@ public final class AppDatabase_Impl extends AppDatabase {
   protected Map<Class<?>, List<Class<?>>> getRequiredTypeConverters() {
     final HashMap<Class<?>, List<Class<?>>> _typeConvertersMap = new HashMap<Class<?>, List<Class<?>>>();
     _typeConvertersMap.put(EnvLogDao.class, EnvLogDao_Impl.getRequiredConverters());
+    _typeConvertersMap.put(SymptomDao.class, SymptomDao_Impl.getRequiredConverters());
     return _typeConvertersMap;
   }
 
@@ -170,6 +195,20 @@ public final class AppDatabase_Impl extends AppDatabase {
           _envLogDao = new EnvLogDao_Impl(this);
         }
         return _envLogDao;
+      }
+    }
+  }
+
+  @Override
+  public SymptomDao symptomDao() {
+    if (_symptomDao != null) {
+      return _symptomDao;
+    } else {
+      synchronized(this) {
+        if(_symptomDao == null) {
+          _symptomDao = new SymptomDao_Impl(this);
+        }
+        return _symptomDao;
       }
     }
   }

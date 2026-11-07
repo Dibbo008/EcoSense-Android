@@ -253,6 +253,52 @@ public final class EnvLogDao_Impl implements EnvLogDao {
   }
 
   @Override
+  public List<EnvLog> since(final long from) {
+    final String _sql = "SELECT * FROM env_logs WHERE timestamp >= ? ORDER BY timestamp ASC";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
+    int _argIndex = 1;
+    _statement.bindLong(_argIndex, from);
+    __db.assertNotSuspendingTransaction();
+    final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+    try {
+      final int _cursorIndexOfId = CursorUtil.getColumnIndexOrThrow(_cursor, "id");
+      final int _cursorIndexOfTimestamp = CursorUtil.getColumnIndexOrThrow(_cursor, "timestamp");
+      final int _cursorIndexOfTemperature = CursorUtil.getColumnIndexOrThrow(_cursor, "temperature");
+      final int _cursorIndexOfHumidity = CursorUtil.getColumnIndexOrThrow(_cursor, "humidity");
+      final int _cursorIndexOfPm25 = CursorUtil.getColumnIndexOrThrow(_cursor, "pm25");
+      final int _cursorIndexOfPm10 = CursorUtil.getColumnIndexOrThrow(_cursor, "pm10");
+      final int _cursorIndexOfAqi = CursorUtil.getColumnIndexOrThrow(_cursor, "aqi");
+      final int _cursorIndexOfSynced = CursorUtil.getColumnIndexOrThrow(_cursor, "synced");
+      final int _cursorIndexOfSource = CursorUtil.getColumnIndexOrThrow(_cursor, "source");
+      final List<EnvLog> _result = new ArrayList<EnvLog>(_cursor.getCount());
+      while (_cursor.moveToNext()) {
+        final EnvLog _item;
+        _item = new EnvLog();
+        _item.id = _cursor.getLong(_cursorIndexOfId);
+        _item.timestamp = _cursor.getLong(_cursorIndexOfTimestamp);
+        _item.temperature = _cursor.getDouble(_cursorIndexOfTemperature);
+        _item.humidity = _cursor.getDouble(_cursorIndexOfHumidity);
+        _item.pm25 = _cursor.getDouble(_cursorIndexOfPm25);
+        _item.pm10 = _cursor.getDouble(_cursorIndexOfPm10);
+        _item.aqi = _cursor.getInt(_cursorIndexOfAqi);
+        final int _tmp;
+        _tmp = _cursor.getInt(_cursorIndexOfSynced);
+        _item.synced = _tmp != 0;
+        if (_cursor.isNull(_cursorIndexOfSource)) {
+          _item.source = null;
+        } else {
+          _item.source = _cursor.getString(_cursorIndexOfSource);
+        }
+        _result.add(_item);
+      }
+      return _result;
+    } finally {
+      _cursor.close();
+      _statement.release();
+    }
+  }
+
+  @Override
   public List<EnvLog> getUnsynced() {
     final String _sql = "SELECT * FROM env_logs WHERE synced = 0";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
