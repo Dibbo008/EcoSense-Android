@@ -364,6 +364,11 @@ public class DashboardActivity extends AppCompatActivity {
                     tvSymStatus.setText(r.insights.size() + " personal pattern"
                             + (r.insights.size() == 1 ? "" : "s") + " found. Today looks fine for you.");
                     pbSymptom.setVisibility(View.GONE);
+                } else if (!r.earlySignals.isEmpty()) {
+                    tvSymStatus.setText(r.earlySignals.size() + " early signal"
+                            + (r.earlySignals.size() == 1 ? "" : "s") + " found. Keep logging for reliable patterns ("
+                            + CorrelationEngine.FULL_ANALYSIS_DAYS + " days).");
+                    pbSymptom.setVisibility(View.GONE);
                 } else {
                     tvSymStatus.setText("No clear triggers yet. Keep logging to improve accuracy.");
                     pbSymptom.setVisibility(View.GONE);

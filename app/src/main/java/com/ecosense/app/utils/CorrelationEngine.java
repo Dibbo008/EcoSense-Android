@@ -28,7 +28,10 @@ import java.util.Map;
  * This finds correlation, not causation, and the UI says so.
  */
 public final class CorrelationEngine {
-    public static final int MIN_OBSERVED_DAYS = 7;
+    /** Days of data needed to unlock "early signals". */
+    public static final int MIN_OBSERVED_DAYS = 3;
+    /** Days needed before the formal statistical test is used. */
+    public static final int FULL_ANALYSIS_DAYS = 7;
     public static final int MIN_SYMPTOM_DAYS = 3;
     private static final double MIN_RISK_RATIO = 1.5;
     private static final double MAX_P = 0.20;
@@ -54,11 +57,27 @@ public final class CorrelationEngine {
         }
     }
 
+    /** Descriptive hint from very little data (3-6 days). Not statistically tested. */
+    public static final class EarlySignal {
+        public int symptom, factor, symptomDays, otherDays;
+        public double meanOnSymptomDays, meanOnOtherDays;
+
+        public String sentence() {
+            return String.format(Locale.US,
+                    "On the %d day%s you had %s, %s averaged %s%s versus %s%s on other days.",
+                    symptomDays, symptomDays == 1 ? "" : "s", SymptomTypes.NAMES[symptom].toLowerCase(Locale.US),
+                    FACTOR_NAMES[factor], fmt(factor, meanOnSymptomDays), FACTOR_UNITS[factor],
+                    fmt(factor, meanOnOtherDays), FACTOR_UNITS[factor]);
+        }
+    }
+
     public static final class Report {
         public int observedDays;
         public int entryCount;
         public int daysToUnlock;       // >0 while there is not enough data
+        public boolean fullAnalysis;   // true once FULL_ANALYSIS_DAYS is reached
         public final List<Insight> insights = new ArrayList<>();
+        public final List<EarlySignal> earlySignals = new ArrayList<>();
     }
 
     private static final class Day {
@@ -121,6 +140,11 @@ public final class CorrelationEngine {
         }
 
         int n = usable.size();
+        report.fullAnalysis = n >= FULL_ANALYSIS_DAYS;
+        if (!report.fullAnalysis) {
+            addEarlySignals(report, usable);
+            return report;
+        }
         for (int s = 0; s < SymptomTypes.FINE; s++) {
             int symptomDays = 0;
             for (Day d : usable) if (d.severity[s] > 0) symptomDays++;
@@ -144,6 +168,43 @@ public final class CorrelationEngine {
             }
         });
         return report;
+    }
+
+    /** Largest "higher on symptom days" difference per symptom, with minimum effect sizes. */
+    private static void addEarlySignals(Report report, List<Day> days) {
+        final double[] minAbs = {8, 15, 2, 8, 15};      // PM2.5, PM10, temp, humidity, AQI
+        final double[] floor = {5, 10, 5, 10, 10};
+        for (int s = 0; s < SymptomTypes.FINE; s++) {
+            int ns = 0, no = 0;
+            for (Day d : days) {
+                if (d.severity[s] > 0) ns++;
+                else no++;
+            }
+            if (ns < 1 || no < 1) continue;
+            EarlySignal best = null;
+            double bestRel = 0;
+            for (int f = 0; f < 5; f++) {
+                double sumS = 0, sumO = 0;
+                for (Day d : days) {
+                    if (d.severity[s] > 0) sumS += d.exposure[f];
+                    else sumO += d.exposure[f];
+                }
+                double mS = sumS / ns, mO = sumO / no;
+                double diff = mS - mO;
+                double rel = diff / Math.max(Math.abs(mO), floor[f]);
+                if (diff >= minAbs[f] && rel >= 0.30 && rel > bestRel) {
+                    bestRel = rel;
+                    best = new EarlySignal();
+                    best.symptom = s;
+                    best.factor = f;
+                    best.symptomDays = ns;
+                    best.otherDays = no;
+                    best.meanOnSymptomDays = mS;
+                    best.meanOnOtherDays = mO;
+                }
+            }
+            if (best != null) report.earlySignals.add(best);
+        }
     }
 
     private static Insight evaluate(List<Day> days, int symptom, int factor, int symptomDays) {

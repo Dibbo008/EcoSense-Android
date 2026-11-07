@@ -92,6 +92,8 @@ public class SymptomActivity extends AppCompatActivity {
 
         btnLog.setOnClickListener(v -> save());
         findViewById(R.id.btnExportSymptoms).setOnClickListener(v -> exportReport());
+        findViewById(R.id.cardChat).setOnClickListener(v ->
+                startActivity(new Intent(this, ChatActivity.class)));
 
         // Any change in the diary refreshes the list and the analysis
         AppDatabase.getInstance(this).symptomDao().observeAll().observe(this, list -> {
@@ -192,9 +194,13 @@ public class SymptomActivity extends AppCompatActivity {
         if (report.daysToUnlock > 0) {
             tvUnlock.setText(String.format(Locale.US,
                     "Patterns unlock after %d logged days \u00B7 %d / %d so far", min, report.observedDays, min));
-        } else {
+        } else if (report.fullAnalysis) {
             tvUnlock.setText(String.format(Locale.US,
                     "Pattern analysis active \u00B7 %d days analysed", report.observedDays));
+        } else {
+            tvUnlock.setText(String.format(Locale.US,
+                    "Early insights active \u00B7 %d days \u00B7 full analysis at %d days",
+                    report.observedDays, CorrelationEngine.FULL_ANALYSIS_DAYS));
         }
 
         cardRisk.setVisibility(risks.isEmpty() ? View.GONE : View.VISIBLE);
@@ -210,11 +216,22 @@ public class SymptomActivity extends AppCompatActivity {
             llInsights.addView(row);
         }
 
+        for (CorrelationEngine.EarlySignal es : report.earlySignals) {
+            View row = getLayoutInflater().inflate(R.layout.item_insight, llInsights, false);
+            ((TextView) row.findViewById(R.id.tvIEmoji)).setText(SymptomTypes.EMOJI[es.symptom]);
+            ((TextView) row.findViewById(R.id.tvIText)).setText(es.sentence());
+            ((TextView) row.findViewById(R.id.tvIConf)).setText("Early signal \u00B7 low confidence");
+            llInsights.addView(row);
+        }
+
         if (report.daysToUnlock > 0) {
             tvInsightNote.setText(String.format(Locale.US,
                     "Log how you feel for %d more day%s (\"Feeling fine\" counts too) and keep EcoSense collecting air data. "
                             + "A day only counts when it has at least 2 air readings.",
                     report.daysToUnlock, report.daysToUnlock == 1 ? "" : "s"));
+        } else if (report.insights.isEmpty() && !report.earlySignals.isEmpty()) {
+            tvInsightNote.setText("These are early hints from only a few days of data. They become reliable after "
+                    + CorrelationEngine.FULL_ANALYSIS_DAYS + " days of logging.");
         } else if (report.insights.isEmpty()) {
             tvInsightNote.setText("No clear link between your symptoms and the air or weather yet. "
                     + "That can be good news, or you may need more days of data.");
