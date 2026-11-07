@@ -65,6 +65,32 @@ public final class CsvExporter {
         }
     }
 
+    /** Saves any text file (e.g. the symptom report) into Downloads. Blocking. */
+    public static Result saveText(Context context, String fileName, String content) throws IOException {
+        byte[] bytes = content.getBytes(StandardCharsets.UTF_8);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            ContentResolver resolver = context.getContentResolver();
+            ContentValues values = new ContentValues();
+            values.put(MediaStore.MediaColumns.DISPLAY_NAME, fileName);
+            values.put(MediaStore.MediaColumns.MIME_TYPE, "text/csv");
+            values.put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_DOWNLOADS);
+            Uri uri = resolver.insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, values);
+            if (uri == null) throw new IOException("Could not create file in Downloads");
+            try (OutputStream os = resolver.openOutputStream(uri)) {
+                if (os == null) throw new IOException("Could not open output stream");
+                os.write(bytes);
+            }
+            return new Result("Downloads/" + fileName, uri);
+        }
+        File dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+        if (!dir.exists() && !dir.mkdirs()) throw new IOException("Cannot create Downloads folder");
+        File file = new File(dir, fileName);
+        try (OutputStream os = new FileOutputStream(file)) {
+            os.write(bytes);
+        }
+        return new Result(file.getAbsolutePath(), null);
+    }
+
     private static void writeCsv(Context context, OutputStream os) throws IOException {
         SimpleDateFormat iso = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
         try (BufferedWriter w = new BufferedWriter(new OutputStreamWriter(os, StandardCharsets.UTF_8));

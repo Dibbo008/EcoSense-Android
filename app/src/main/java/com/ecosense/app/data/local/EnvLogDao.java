@@ -26,6 +26,9 @@ public interface EnvLogDao {
     @Query("SELECT * FROM env_logs ORDER BY timestamp DESC LIMIT :n")
     List<EnvLog> getRecent(int n);
 
+    @Query("SELECT * FROM env_logs WHERE timestamp >= :from ORDER BY timestamp ASC")
+    List<EnvLog> since(long from);
+
     @Query("SELECT * FROM env_logs WHERE synced = 0")
     List<EnvLog> getUnsynced();
 

@@ -9,17 +9,20 @@ import androidx.core.content.ContextCompat;
 import com.ecosense.app.R;
 import com.ecosense.app.ui.dashboard.DashboardActivity;
 import com.ecosense.app.ui.history.HistoryActivity;
+import com.ecosense.app.ui.plan.PlanActivity;
 import com.ecosense.app.ui.prediction.PredictionActivity;
 import com.ecosense.app.ui.settings.SettingsActivity;
+import com.ecosense.app.ui.symptom.SymptomActivity;
 
 /** Wires the floating bottom navigation pill (view_bottom_nav.xml) on each main screen. */
 public final class NavHelper {
-    public static final int NONE = -1, HOME = 0, HISTORY = 1, PREDICT = 2, SETTINGS = 3;
+    public static final int NONE = -1, HOME = 0, PLAN = 1, SYMPTOM = 2, HISTORY = 3, PREDICT = 4, SETTINGS = 5;
 
-    private static final int[] IDS = {R.id.navHome, R.id.navHistory, R.id.navPredict, R.id.navSettings};
+    private static final int[] IDS = {R.id.navHome, R.id.navPlan, R.id.navSymptom,
+            R.id.navHistory, R.id.navPredict, R.id.navSettings};
     private static final Class<?>[] TARGETS = {
-            DashboardActivity.class, HistoryActivity.class,
-            PredictionActivity.class, SettingsActivity.class};
+            DashboardActivity.class, PlanActivity.class, SymptomActivity.class,
+            HistoryActivity.class, PredictionActivity.class, SettingsActivity.class};
 
     private NavHelper() {}
 
