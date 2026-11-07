@@ -146,6 +146,39 @@
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
+                <!-- personal triggers (Symptom Link) -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardRisk"
+                    style="@style/EcoCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:visibility="gone"
+                    app:cardBackgroundColor="@color/tint_temp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="18dp">
+
+                        <TextView
+                            style="@style/EcoSection"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="🩺  Your personal triggers" />
+
+                        <TextView
+                            android:id="@+id/tvRisk"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:lineSpacingExtra="3dp"
+                            android:textColor="@color/eco_text"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
                 <!-- hour strip -->
                 <com.google.android.material.card.MaterialCardView
                     style="@style/EcoCard"
@@ -265,8 +298,8 @@
         layout="@layout/view_bottom_nav"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginEnd="28dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

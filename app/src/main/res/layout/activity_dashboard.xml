@@ -123,7 +123,7 @@
                         android:visibility="gone" />
                 </LinearLayout>
 
-                <!-- hero: temperature -->
+                <!-- hero: temperature + AQI gauge -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -131,73 +131,71 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="🌤️"
-                        android:textSize="46sp" />
+                        android:layout_weight="1"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/tvTemp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
-                        android:fontFamily="sans-serif-medium"
-                        android:text="--"
-                        android:textColor="@android:color/white"
-                        android:textSize="54sp"
-                        android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/tvTemp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="--"
+                            android:textColor="@android:color/white"
+                            android:textSize="52sp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tvAqiLabel"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/bg_chip_white"
+                                android:fontFamily="sans-serif-medium"
+                                android:paddingStart="12dp"
+                                android:paddingTop="4dp"
+                                android:paddingEnd="12dp"
+                                android:paddingBottom="4dp"
+                                android:text="No data"
+                                android:textColor="@android:color/white"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:id="@+id/tvAqi"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:fontFamily="sans-serif-medium"
+                                android:text="--"
+                                android:textColor="#E6F1FD"
+                                android:textSize="13sp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tvUpdated"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:alpha="0.9"
+                            android:text="No data yet. Tap refresh."
+                            android:textColor="@android:color/white"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <com.ecosense.app.ui.dashboard.AqiGaugeView
+                        android:id="@+id/aqiGauge"
+                        android:layout_width="112dp"
+                        android:layout_height="112dp"
+                        android:layout_marginStart="8dp" />
                 </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/tvAqiLabel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/bg_chip_white"
-                        android:fontFamily="sans-serif-medium"
-                        android:paddingStart="14dp"
-                        android:paddingTop="5dp"
-                        android:paddingEnd="14dp"
-                        android:paddingBottom="5dp"
-                        android:text="No data"
-                        android:textColor="@android:color/white"
-                        android:textSize="14sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
-                        android:text="US AQI"
-                        android:textColor="#E6F1FD"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:id="@+id/tvAqi"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="6dp"
-                        android:fontFamily="sans-serif-medium"
-                        android:text="--"
-                        android:textColor="@android:color/white"
-                        android:textSize="18sp" />
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/tvUpdated"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:alpha="0.9"
-                    android:text="No data yet. Tap refresh."
-                    android:textColor="@android:color/white"
-                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/tvAlert"
@@ -431,6 +429,174 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardSymptom"
+                    style="@style/EcoCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="18dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    style="@style/EcoLabel"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="🩺  Symptom Link" />
+
+                                <TextView
+                                    style="@style/EcoSection"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:text="How do you feel today?"
+                                    android:textSize="17sp" />
+                            </LinearLayout>
+
+                            <ImageView
+                                android:layout_width="42dp"
+                                android:layout_height="42dp"
+                                android:layout_marginStart="10dp"
+                                android:background="@drawable/bg_circle_tile"
+                                android:contentDescription="Open symptom diary"
+                                android:padding="11dp"
+                                android:src="@drawable/ic_arrow_ne"
+                                app:tint="@color/eco_text" />
+                        </LinearLayout>
+
+                        <HorizontalScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:scrollbars="none">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/qlFine"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="8dp"
+                                    android:background="@drawable/bg_tile"
+                                    android:clickable="true"
+                                    android:focusable="true"
+                                    android:foreground="?attr/selectableItemBackground"
+                                    android:paddingStart="14dp"
+                                    android:paddingTop="9dp"
+                                    android:paddingEnd="14dp"
+                                    android:paddingBottom="9dp"
+                                    android:text="😊 Fine"
+                                    android:textColor="@color/eco_text"
+                                    android:textSize="13sp" />
+                                <TextView
+                                    android:id="@+id/qlHeadache"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="8dp"
+                                    android:background="@drawable/bg_tile"
+                                    android:clickable="true"
+                                    android:focusable="true"
+                                    android:foreground="?attr/selectableItemBackground"
+                                    android:paddingStart="14dp"
+                                    android:paddingTop="9dp"
+                                    android:paddingEnd="14dp"
+                                    android:paddingBottom="9dp"
+                                    android:text="🤕 Headache"
+                                    android:textColor="@color/eco_text"
+                                    android:textSize="13sp" />
+                                <TextView
+                                    android:id="@+id/qlCough"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="8dp"
+                                    android:background="@drawable/bg_tile"
+                                    android:clickable="true"
+                                    android:focusable="true"
+                                    android:foreground="?attr/selectableItemBackground"
+                                    android:paddingStart="14dp"
+                                    android:paddingTop="9dp"
+                                    android:paddingEnd="14dp"
+                                    android:paddingBottom="9dp"
+                                    android:text="😷 Cough"
+                                    android:textColor="@color/eco_text"
+                                    android:textSize="13sp" />
+                                <TextView
+                                    android:id="@+id/qlBreath"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="8dp"
+                                    android:background="@drawable/bg_tile"
+                                    android:clickable="true"
+                                    android:focusable="true"
+                                    android:foreground="?attr/selectableItemBackground"
+                                    android:paddingStart="14dp"
+                                    android:paddingTop="9dp"
+                                    android:paddingEnd="14dp"
+                                    android:paddingBottom="9dp"
+                                    android:text="🌬️ Breathing"
+                                    android:textColor="@color/eco_text"
+                                    android:textSize="13sp" />
+                                <TextView
+                                    android:id="@+id/qlFatigue"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="8dp"
+                                    android:background="@drawable/bg_tile"
+                                    android:clickable="true"
+                                    android:focusable="true"
+                                    android:foreground="?attr/selectableItemBackground"
+                                    android:paddingStart="14dp"
+                                    android:paddingTop="9dp"
+                                    android:paddingEnd="14dp"
+                                    android:paddingBottom="9dp"
+                                    android:text="😫 Fatigue"
+                                    android:textColor="@color/eco_text"
+                                    android:textSize="13sp" />
+                            </LinearLayout>
+                        </HorizontalScrollView>
+
+                        <TextView
+                            android:id="@+id/tvSymStatus"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:lineSpacingExtra="2dp"
+                            android:textColor="@color/eco_text"
+                            android:textSize="13sp" />
+
+                        <com.google.android.material.progressindicator.LinearProgressIndicator
+                            android:id="@+id/pbSymptom"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:visibility="gone"
+                            app:trackColor="@color/eco_stroke"
+                            app:trackCornerRadius="5dp"
+                            app:trackThickness="9dp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
                     style="@style/EcoCard"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -497,100 +663,6 @@
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardPredict"
-                style="@style/EcoCard"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:clickable="true"
-                android:focusable="true">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:padding="18dp">
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            style="@style/EcoSection"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Trend forecast"
-                            android:textSize="17sp" />
-
-                        <TextView
-                            style="@style/EcoLabel"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="See where your air quality is heading" />
-                    </LinearLayout>
-
-                    <ImageView
-                        android:layout_width="42dp"
-                        android:layout_height="42dp"
-                        android:background="@drawable/bg_circle_tile"
-                        android:contentDescription="Open"
-                        android:padding="11dp"
-                        android:src="@drawable/ic_arrow_ne"
-                        app:tint="@color/eco_text" />
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardHistory"
-                style="@style/EcoCard"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:clickable="true"
-                android:focusable="true">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:padding="18dp">
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            style="@style/EcoSection"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Reading history"
-                            android:textSize="17sp" />
-
-                        <TextView
-                            style="@style/EcoLabel"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="Browse, search and export your logs" />
-                    </LinearLayout>
-
-                    <ImageView
-                        android:layout_width="42dp"
-                        android:layout_height="42dp"
-                        android:background="@drawable/bg_circle_tile"
-                        android:contentDescription="Open"
-                        android:padding="11dp"
-                        android:src="@drawable/ic_arrow_ne"
-                        app:tint="@color/eco_text" />
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
@@ -600,8 +672,8 @@
         layout="@layout/view_bottom_nav"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginEnd="28dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

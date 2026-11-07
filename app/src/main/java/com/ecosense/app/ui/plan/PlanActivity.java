@@ -18,6 +18,7 @@ import com.ecosense.app.R;
 import com.ecosense.app.data.local.AppDatabase;
 import com.ecosense.app.data.local.EnvLog;
 import com.ecosense.app.data.local.HourPoint;
+import com.ecosense.app.data.local.SymptomRepository;
 import com.ecosense.app.data.remote.ForecastRepository;
 import com.ecosense.app.ui.settings.SettingsActivity;
 import com.ecosense.app.utils.AdvisorEngine;
@@ -35,6 +36,8 @@ import java.util.Locale;
 public class PlanActivity extends AppCompatActivity {
     private TextView tvHeadline, tvSub, tvProfileChip, tvBestTime, tvBestSub, tvWorst, tvNote;
     private LinearLayout llHours, llAdvice;
+    private View cardRisk;
+    private TextView tvRisk;
     private ProgressBar progress;
 
     @Override
@@ -44,7 +47,7 @@ public class PlanActivity extends AppCompatActivity {
 
         MaterialToolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setNavigationOnClickListener(v -> finish());
-        NavHelper.setup(this, NavHelper.NONE);
+        NavHelper.setup(this, NavHelper.PLAN);
 
         tvHeadline = findViewById(R.id.tvPHeadline);
         tvSub = findViewById(R.id.tvPSub);
@@ -56,6 +59,8 @@ public class PlanActivity extends AppCompatActivity {
         llHours = findViewById(R.id.llHours);
         llAdvice = findViewById(R.id.llAdvice);
         progress = findViewById(R.id.progress);
+        cardRisk = findViewById(R.id.cardRisk);
+        tvRisk = findViewById(R.id.tvRisk);
 
         tvProfileChip.setOnClickListener(v -> startActivity(new Intent(this, SettingsActivity.class)));
     }
@@ -72,15 +77,18 @@ public class PlanActivity extends AppCompatActivity {
         AppDatabase.IO.execute(() -> {
             EnvLog latest = AppDatabase.getInstance(app).envLogDao().getLatest();
             ForecastRepository.Result r = ForecastRepository.load(app, false);
+            final List<String> risks = SymptomRepository.risksToday(app, latest, r.points);
             runOnUiThread(() -> {
                 if (isDestroyed()) return;
                 progress.setVisibility(View.GONE);
-                render(latest, r);
+                render(latest, r, risks);
             });
         });
     }
 
-    private void render(EnvLog latest, ForecastRepository.Result r) {
+    private void render(EnvLog latest, ForecastRepository.Result r, List<String> risks) {
+        cardRisk.setVisibility(risks.isEmpty() ? View.GONE : View.VISIBLE);
+        tvRisk.setText(android.text.TextUtils.join("\n\n", risks));
         Prefs prefs = Prefs.get(this);
         int profile = AdvisorEngine.clampProfile(prefs.getProfile());
         long now = System.currentTimeMillis();

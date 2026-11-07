@@ -24,23 +24,26 @@ import com.ecosense.app.data.local.AppDatabase;
 import com.ecosense.app.data.local.EnvLog;
 import com.ecosense.app.data.local.ForecastCache;
 import com.ecosense.app.data.local.HourPoint;
+import com.ecosense.app.data.local.SymptomRepository;
 import com.ecosense.app.data.remote.EnvRepository;
 import com.ecosense.app.data.remote.ForecastRepository;
 import com.ecosense.app.service.MonitoringService;
 import com.ecosense.app.ui.auth.LoginActivity;
-import com.ecosense.app.ui.history.HistoryActivity;
 import com.ecosense.app.ui.plan.PlanActivity;
-import com.ecosense.app.ui.prediction.PredictionActivity;
+import com.ecosense.app.ui.symptom.SymptomActivity;
 import com.ecosense.app.utils.AdvisorEngine;
 import com.ecosense.app.utils.AlertChecker;
+import com.ecosense.app.utils.CorrelationEngine;
 import com.ecosense.app.utils.EcoTips;
 import com.ecosense.app.utils.LogFormatter;
 import com.ecosense.app.utils.NavHelper;
 import com.ecosense.app.utils.PermissionHelper;
 import com.ecosense.app.utils.Prefs;
 import com.ecosense.app.utils.SpikeDetector;
+import com.ecosense.app.utils.SymptomTypes;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.materialswitch.MaterialSwitch;
+import com.google.android.material.progressindicator.LinearProgressIndicator;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -56,7 +59,9 @@ public class DashboardActivity extends AppCompatActivity {
     private TextView tvGreeting, tvName, tvLocation, tvUpdated, tvTemp, tvHumidity, tvPm25, tvPm10,
             tvAqi, tvAqiLabel, tvTip, tvStatus, tvAlert, tvRecentEmpty;
     private LinearLayout llRecent, llPlanChips;
-    private TextView tvPlanHeadline, tvPlanBest;
+    private TextView tvPlanHeadline, tvPlanBest, tvSymStatus;
+    private AqiGaugeView aqiGauge;
+    private LinearProgressIndicator pbSymptom;
     private ProgressBar progress;
     private MaterialSwitch swMonitor;
     private EnvLog latest;
@@ -104,6 +109,9 @@ public class DashboardActivity extends AppCompatActivity {
         llPlanChips = findViewById(R.id.llPlanChips);
         tvPlanHeadline = findViewById(R.id.tvPlanHeadline);
         tvPlanBest = findViewById(R.id.tvPlanBest);
+        tvSymStatus = findViewById(R.id.tvSymStatus);
+        pbSymptom = findViewById(R.id.pbSymptom);
+        aqiGauge = findViewById(R.id.aqiGauge);
         progress = findViewById(R.id.progress);
         swMonitor = findViewById(R.id.swMonitor);
 
@@ -123,10 +131,14 @@ public class DashboardActivity extends AppCompatActivity {
         findViewById(R.id.btnShare).setOnClickListener(v -> shareReport());
         findViewById(R.id.cardPlan).setOnClickListener(v ->
                 startActivity(new Intent(this, PlanActivity.class)));
-        findViewById(R.id.cardPredict).setOnClickListener(v ->
-                startActivity(new Intent(this, PredictionActivity.class)));
-        findViewById(R.id.cardHistory).setOnClickListener(v ->
-                startActivity(new Intent(this, HistoryActivity.class)));
+        findViewById(R.id.cardSymptom).setOnClickListener(v ->
+                startActivity(new Intent(this, SymptomActivity.class)));
+        // One-tap quick log (mild); details can be added in the Symptom screen
+        final int[][] quick = {{R.id.qlFine, SymptomTypes.FINE}, {R.id.qlHeadache, 0},
+                {R.id.qlCough, 1}, {R.id.qlBreath, 3}, {R.id.qlFatigue, 4}};
+        for (int[] q : quick) {
+            findViewById(q[0]).setOnClickListener(v -> quickLog(q[1]));
+        }
         NavHelper.setup(this, NavHelper.HOME);
     }
 
@@ -153,6 +165,7 @@ public class DashboardActivity extends AppCompatActivity {
         updateHeader();
         swMonitor.setChecked(Prefs.get(this).isMonitoring());
         loadLatest();
+        updateSymptomCard();
         promptForPermissions();
     }
 
@@ -277,7 +290,8 @@ public class DashboardActivity extends AppCompatActivity {
         tvHumidity.setText(LogFormatter.hum(l.humidity));
         tvPm25.setText(String.format(Locale.US, "%.1f", l.pm25));
         tvPm10.setText(String.format(Locale.US, "%.1f", l.pm10));
-        tvAqi.setText(String.valueOf(l.aqi));
+        tvAqi.setText("US AQI " + l.aqi);
+        aqiGauge.setValue(l.aqi);
         tvAqiLabel.setText(LogFormatter.aqiLabel(l.aqi));
         tvUpdated.setText("Updated " + LogFormatter.date(l.timestamp));
         tint(tvHumidity, l.humidity > p.getMaxHumidity());
@@ -307,6 +321,55 @@ public class DashboardActivity extends AppCompatActivity {
             ((TextView) v.findViewById(R.id.tvRTemp)).setText(String.format(Locale.US, "%.0f\u00B0", l.temperature));
             llRecent.addView(v);
         }
+    }
+
+    /** One-tap diary entry from the dashboard. */
+    private void quickLog(int type) {
+        final Context app = getApplicationContext();
+        AppDatabase.IO.execute(() -> {
+            SymptomRepository.log(app, type, type == SymptomTypes.FINE ? 0 : 1, "");
+            runOnUiThread(() -> {
+                if (isDestroyed()) return;
+                Toast.makeText(this, "Logged " + SymptomTypes.EMOJI[type] + " " + SymptomTypes.NAMES[type]
+                        + (type == SymptomTypes.FINE ? "" : " (mild). Open Symptom Link to add details."),
+                        Toast.LENGTH_SHORT).show();
+                updateSymptomCard();
+            });
+        });
+    }
+
+    /** Symptom Link card: today's personal risk, or progress toward unlocking patterns. */
+    private void updateSymptomCard() {
+        final Context app = getApplicationContext();
+        AppDatabase.IO.execute(() -> {
+            CorrelationEngine.Report r = SymptomRepository.analyze(app);
+            EnvLog latestLog = AppDatabase.getInstance(app).envLogDao().getLatest();
+            ForecastCache.Blob cache = ForecastCache.read(app);
+            List<String> risks = CorrelationEngine.todayRisks(r.insights, latestLog,
+                    cache != null ? cache.points : null, System.currentTimeMillis());
+            runOnUiThread(() -> {
+                if (isDestroyed()) return;
+                if (!risks.isEmpty()) {
+                    tvSymStatus.setText("\u26A0 " + risks.get(0));
+                    pbSymptom.setVisibility(View.GONE);
+                } else if (r.daysToUnlock > 0) {
+                    tvSymStatus.setText(String.format(Locale.US,
+                            "Log %d more day%s to unlock your personal patterns (%d/%d).",
+                            r.daysToUnlock, r.daysToUnlock == 1 ? "" : "s",
+                            r.observedDays, CorrelationEngine.MIN_OBSERVED_DAYS));
+                    pbSymptom.setMax(CorrelationEngine.MIN_OBSERVED_DAYS);
+                    pbSymptom.setProgressCompat(r.observedDays, true);
+                    pbSymptom.setVisibility(View.VISIBLE);
+                } else if (!r.insights.isEmpty()) {
+                    tvSymStatus.setText(r.insights.size() + " personal pattern"
+                            + (r.insights.size() == 1 ? "" : "s") + " found. Today looks fine for you.");
+                    pbSymptom.setVisibility(View.GONE);
+                } else {
+                    tvSymStatus.setText("No clear triggers yet. Keep logging to improve accuracy.");
+                    pbSymptom.setVisibility(View.GONE);
+                }
+            });
+        });
     }
 
     /** Spike warning wins over the plain "above limits" warning. */
