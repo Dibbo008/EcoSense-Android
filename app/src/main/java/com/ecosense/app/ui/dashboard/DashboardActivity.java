@@ -41,6 +41,7 @@ import com.ecosense.app.utils.PermissionHelper;
 import com.ecosense.app.utils.Prefs;
 import com.ecosense.app.utils.SpikeDetector;
 import com.ecosense.app.utils.SymptomTypes;
+import com.ecosense.app.utils.SystemMonitor;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.materialswitch.MaterialSwitch;
 import com.google.android.material.progressindicator.LinearProgressIndicator;
@@ -61,6 +62,9 @@ public class DashboardActivity extends AppCompatActivity {
     private LinearLayout llRecent, llPlanChips;
     private TextView tvPlanHeadline, tvPlanBest, tvSymStatus;
     private AqiGaugeView aqiGauge;
+    private TextView tvSysBanner;
+    private boolean blockedBefore, batteryLowBefore;
+    private final SystemMonitor.Listener systemListener = this::onSystemChanged;
     private LinearProgressIndicator pbSymptom;
     private ProgressBar progress;
     private MaterialSwitch swMonitor;
@@ -104,6 +108,7 @@ public class DashboardActivity extends AppCompatActivity {
         tvTip = findViewById(R.id.tvTip);
         tvStatus = findViewById(R.id.tvStatus);
         tvAlert = findViewById(R.id.tvAlert);
+        tvSysBanner = findViewById(R.id.tvSysBanner);
         tvRecentEmpty = findViewById(R.id.tvRecentEmpty);
         llRecent = findViewById(R.id.llRecent);
         llPlanChips = findViewById(R.id.llPlanChips);
@@ -157,6 +162,11 @@ public class DashboardActivity extends AppCompatActivity {
                     ContextCompat.RECEIVER_NOT_EXPORTED);
             receiverRegistered = true;
         }
+        // System broadcasts: battery low, airplane mode, connectivity
+        SystemMonitor.register(this, systemListener);
+        blockedBefore = !SystemMonitor.canFetch();
+        batteryLowBefore = SystemMonitor.isBatteryLow();
+        updateSystemBanner();
     }
 
     @Override
@@ -178,6 +188,7 @@ public class DashboardActivity extends AppCompatActivity {
 
     @Override
     protected void onStop() {
+        SystemMonitor.unregister(systemListener);
         if (receiverRegistered) {
             unregisterReceiver(readingReceiver);
             receiverRegistered = false;
@@ -253,6 +264,12 @@ public class DashboardActivity extends AppCompatActivity {
     }
 
     private void refresh() {
+        if (!SystemMonitor.canFetch()) {
+            Toast.makeText(this, SystemMonitor.isAirplane()
+                    ? "Airplane mode is on. Showing saved data."
+                    : "No internet connection. Showing saved data.", Toast.LENGTH_SHORT).show();
+            return;
+        }
         progress.setVisibility(View.VISIBLE);
         final Context app = getApplicationContext();
         AppDatabase.IO.execute(() -> {
@@ -321,6 +338,35 @@ public class DashboardActivity extends AppCompatActivity {
             ((TextView) v.findViewById(R.id.tvRTemp)).setText(String.format(Locale.US, "%.0f\u00B0", l.temperature));
             llRecent.addView(v);
         }
+    }
+
+    // ------------------------------------------------------- system broadcasts
+
+    private void updateSystemBanner() {
+        String banner = SystemMonitor.banner();
+        tvSysBanner.setText(banner);
+        tvSysBanner.setVisibility(banner == null ? View.GONE : View.VISIBLE);
+    }
+
+    /** Called (main thread) when a system broadcast changes battery / airplane / network state. */
+    private void onSystemChanged() {
+        updateSystemBanner();
+        boolean blocked = !SystemMonitor.canFetch();
+        boolean low = SystemMonitor.isBatteryLow();
+        if (blockedBefore && !blocked) {
+            Toast.makeText(this, "Back online. Refreshing\u2026", Toast.LENGTH_SHORT).show();
+            refresh();
+        } else if (!blockedBefore && blocked) {
+            Toast.makeText(this, SystemMonitor.isAirplane()
+                    ? "Airplane mode on. Showing saved data."
+                    : "You are offline. Showing saved data.", Toast.LENGTH_LONG).show();
+        }
+        if (low != batteryLowBefore) {
+            Toast.makeText(this, low ? "Battery low: background checks slowed to save power."
+                    : "Battery OK: normal background checks resumed.", Toast.LENGTH_LONG).show();
+        }
+        blockedBefore = blocked;
+        batteryLowBefore = low;
     }
 
     /** One-tap diary entry from the dashboard. */
