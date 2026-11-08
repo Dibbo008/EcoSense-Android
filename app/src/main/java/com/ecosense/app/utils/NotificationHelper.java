@@ -46,10 +46,16 @@ public final class NotificationHelper {
     }
 
     public static Notification buildMonitoring(Context c) {
+        return buildMonitoring(c, "Checking air quality and weather in the background");
+    }
+
+    /** Ongoing foreground-service notification whose text is updated after every check. */
+    public static Notification buildMonitoring(Context c, String text) {
         return new NotificationCompat.Builder(c, CH_MONITOR)
                 .setSmallIcon(R.drawable.ic_leaf)
                 .setContentTitle("EcoSense is monitoring")
-                .setContentText("Checking air quality and weather in the background")
+                .setContentText(text)
+                .setOnlyAlertOnce(true)
                 .setContentIntent(openDashboard(c))
                 .setOngoing(true)
                 .setPriority(NotificationCompat.PRIORITY_LOW)
