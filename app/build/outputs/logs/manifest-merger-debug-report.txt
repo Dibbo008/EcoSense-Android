@@ -206,9 +206,9 @@ MERGED from [com.google.android.play:core-common:2.0.3] C:\Users\MSI\.gradle\cac
 	android:label
 		ADDED from E:\4.TextDocs(CODINGS)\EcoSense (2.2 Android app)\app\src\main\AndroidManifest.xml:27:9-41
 	android:roundIcon
-		ADDED from E:\4.TextDocs(CODINGS)\EcoSense (2.2 Android app)\app\src\main\AndroidManifest.xml:28:9-50
+		ADDED from E:\4.TextDocs(CODINGS)\EcoSense (2.2 Android app)\app\src\main\AndroidManifest.xml:28:9-54
 	android:icon
-		ADDED from E:\4.TextDocs(CODINGS)\EcoSense (2.2 Android app)\app\src\main\AndroidManifest.xml:26:9-45
+		ADDED from E:\4.TextDocs(CODINGS)\EcoSense (2.2 Android app)\app\src\main\AndroidManifest.xml:26:9-43
 	android:allowBackup
 		ADDED from E:\4.TextDocs(CODINGS)\EcoSense (2.2 Android app)\app\src\main\AndroidManifest.xml:25:9-36
 	android:theme

@@ -1,4 +1,4 @@
-#Sat Nov 07 23:51:21 BDT 2026
+#Sun Nov 08 17:47:49 BDT 2026
 base.0=E\:\\4.TextDocs(CODINGS)\\EcoSense (2.2 Android app)\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
 base.1=E\:\\4.TextDocs(CODINGS)\\EcoSense (2.2 Android app)\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
 base.10=E\:\\4.TextDocs(CODINGS)\\EcoSense (2.2 Android app)\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes3.dex

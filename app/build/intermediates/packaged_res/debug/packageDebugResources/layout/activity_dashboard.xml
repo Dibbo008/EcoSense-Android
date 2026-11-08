@@ -89,6 +89,22 @@
                         android:tint="#0F172A" />
                 </LinearLayout>
 
+                <!-- system status banner (airplane / offline / battery low) -->
+                <TextView
+                    android:id="@+id/tvSysBanner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/bg_chip_alert"
+                    android:fontFamily="sans-serif-medium"
+                    android:paddingStart="14dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="14dp"
+                    android:paddingBottom="8dp"
+                    android:textColor="@android:color/white"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
+
                 <!-- location -->
                 <LinearLayout
                     android:layout_width="match_parent"

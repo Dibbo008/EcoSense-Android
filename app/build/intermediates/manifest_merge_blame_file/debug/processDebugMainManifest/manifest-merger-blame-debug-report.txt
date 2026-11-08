@@ -74,12 +74,12 @@
 41-->[androidx.core:core:1.13.0] C:\Users\MSI\.gradle\caches\8.9\transforms\32c5d5592cbced18c50b69bee66180ef\transformed\core-1.13.0\AndroidManifest.xml:28:18-86
 42        android:debuggable="true"
 43        android:extractNativeLibs="false"
-44        android:icon="@drawable/ic_launcher"
-44-->E:\4.TextDocs(CODINGS)\EcoSense (2.2 Android app)\app\src\main\AndroidManifest.xml:26:9-45
+44        android:icon="@mipmap/ic_launcher"
+44-->E:\4.TextDocs(CODINGS)\EcoSense (2.2 Android app)\app\src\main\AndroidManifest.xml:26:9-43
 45        android:label="@string/app_name"
 45-->E:\4.TextDocs(CODINGS)\EcoSense (2.2 Android app)\app\src\main\AndroidManifest.xml:27:9-41
-46        android:roundIcon="@drawable/ic_launcher"
-46-->E:\4.TextDocs(CODINGS)\EcoSense (2.2 Android app)\app\src\main\AndroidManifest.xml:28:9-50
+46        android:roundIcon="@mipmap/ic_launcher_round"
+46-->E:\4.TextDocs(CODINGS)\EcoSense (2.2 Android app)\app\src\main\AndroidManifest.xml:28:9-54
 47        android:supportsRtl="true"
 47-->E:\4.TextDocs(CODINGS)\EcoSense (2.2 Android app)\app\src\main\AndroidManifest.xml:29:9-35
 48        android:testOnly="true"

@@ -1,250 +1,318 @@
 [
     {
-        "merged": "com.ecosense.app-debug-45:/drawable_bg_toolbar.xml.flat",
-        "source": "com.ecosense.app-main-47:/drawable/bg_toolbar.xml"
+        "merged": "com.ecosense.app-debug-45:/mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "com.ecosense.app-main-47:/mipmap-xxhdpi/ic_launcher_round.png"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/anim_slide_in_right.xml.flat",
-        "source": "com.ecosense.app-main-47:/anim/slide_in_right.xml"
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\layout_item_insight.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\layout\\item_insight.xml"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/drawable_ic_clouds.xml.flat",
-        "source": "com.ecosense.app-main-47:/drawable/ic_clouds.xml"
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\drawable_bg_nav_active.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\drawable\\bg_nav_active.xml"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/layout_item_hour.xml.flat",
-        "source": "com.ecosense.app-main-47:/layout/item_hour.xml"
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\drawable_bg_chip_white.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\drawable\\bg_chip_white.xml"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/drawable_ic_history.xml.flat",
-        "source": "com.ecosense.app-main-47:/drawable/ic_history.xml"
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\layout_item_log.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\layout\\item_log.xml"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/drawable_ic_back.xml.flat",
-        "source": "com.ecosense.app-main-47:/drawable/ic_back.xml"
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\drawable_ic_clouds.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\drawable\\ic_clouds.xml"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/layout_item_chat.xml.flat",
-        "source": "com.ecosense.app-main-47:/layout/item_chat.xml"
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\drawable_ic_search.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\drawable\\ic_search.xml"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/color_chip_text.xml.flat",
-        "source": "com.ecosense.app-main-47:/color/chip_text.xml"
-    },
-    {
-        "merged": "com.ecosense.app-debug-45:/color_chip_bg.xml.flat",
-        "source": "com.ecosense.app-main-47:/color/chip_bg.xml"
-    },
-    {
-        "merged": "com.ecosense.app-debug-45:/layout_item_insight.xml.flat",
-        "source": "com.ecosense.app-main-47:/layout/item_insight.xml"
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\layout_item_recent.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\layout\\item_recent.xml"
     },
     {
         "merged": "com.ecosense.app-debug-45:/layout_activity_dashboard.xml.flat",
         "source": "com.ecosense.app-main-47:/layout/activity_dashboard.xml"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/drawable_bg_bubble_user.xml.flat",
-        "source": "com.ecosense.app-main-47:/drawable/bg_bubble_user.xml"
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\layout_activity_symptom.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\layout\\activity_symptom.xml"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/layout_activity_chat.xml.flat",
-        "source": "com.ecosense.app-main-47:/layout/activity_chat.xml"
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\drawable_ic_history.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\drawable\\ic_history.xml"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/layout_item_recent.xml.flat",
-        "source": "com.ecosense.app-main-47:/layout/item_recent.xml"
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\drawable_bg_bubble_bot.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\drawable\\bg_bubble_bot.xml"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/anim_layout_slide_up.xml.flat",
-        "source": "com.ecosense.app-main-47:/anim/layout_slide_up.xml"
+        "merged": "com.ecosense.app-debug-45:/mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "com.ecosense.app-main-47:/mipmap-hdpi/ic_launcher_round.png"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/drawable_ic_arrow_ne.xml.flat",
-        "source": "com.ecosense.app-main-47:/drawable/ic_arrow_ne.xml"
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\drawable_ic_settings.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\drawable\\ic_settings.xml"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/drawable_ic_delete.xml.flat",
-        "source": "com.ecosense.app-main-47:/drawable/ic_delete.xml"
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\anim_layout_slide_up.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\anim\\layout_slide_up.xml"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/layout_item_forecast.xml.flat",
-        "source": "com.ecosense.app-main-47:/layout/item_forecast.xml"
+        "merged": "com.ecosense.app-debug-45:/mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "com.ecosense.app-main-47:/mipmap-xxxhdpi/ic_launcher_round.png"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/anim_fade_out.xml.flat",
-        "source": "com.ecosense.app-main-47:/anim/fade_out.xml"
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\anim_slide_out_right.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\anim\\slide_out_right.xml"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/anim_slide_out_right.xml.flat",
-        "source": "com.ecosense.app-main-47:/anim/slide_out_right.xml"
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\drawable_bg_logo_ring.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\drawable\\bg_logo_ring.xml"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/drawable_ic_home.xml.flat",
-        "source": "com.ecosense.app-main-47:/drawable/ic_home.xml"
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\drawable_ic_launcher.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\drawable\\ic_launcher.xml"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/drawable_bg_logo_ring.xml.flat",
-        "source": "com.ecosense.app-main-47:/drawable/bg_logo_ring.xml"
+        "merged": "com.ecosense.app-debug-45:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.ecosense.app-main-47:/drawable/ic_launcher_background.xml"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/anim_slide_in_left.xml.flat",
-        "source": "com.ecosense.app-main-47:/anim/slide_in_left.xml"
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\drawable_bg_chip_alert.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\drawable\\bg_chip_alert.xml"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/anim_slide_up_fade.xml.flat",
-        "source": "com.ecosense.app-main-47:/anim/slide_up_fade.xml"
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\layout_item_hour.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\layout\\item_hour.xml"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/drawable_bg_nav_active.xml.flat",
-        "source": "com.ecosense.app-main-47:/drawable/bg_nav_active.xml"
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\drawable_ic_share.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\drawable\\ic_share.xml"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/drawable_bg_glass.xml.flat",
-        "source": "com.ecosense.app-main-47:/drawable/bg_glass.xml"
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\drawable_ic_home.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\drawable\\ic_home.xml"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/layout_activity_symptom.xml.flat",
-        "source": "com.ecosense.app-main-47:/layout/activity_symptom.xml"
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\drawable_bg_pill.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\drawable\\bg_pill.xml"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/layout_item_log.xml.flat",
-        "source": "com.ecosense.app-main-47:/layout/item_log.xml"
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\layout_activity_dashboard.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\layout\\activity_dashboard.xml"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/drawable_ic_share.xml.flat",
-        "source": "com.ecosense.app-main-47:/drawable/ic_share.xml"
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\layout_item_chat_choice.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\layout\\item_chat_choice.xml"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/drawable_ic_plan.xml.flat",
-        "source": "com.ecosense.app-main-47:/drawable/ic_plan.xml"
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\layout_item_chat.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\layout\\item_chat.xml"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/layout_activity_login.xml.flat",
-        "source": "com.ecosense.app-main-47:/layout/activity_login.xml"
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\drawable_ic_heart.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\drawable\\ic_heart.xml"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/layout_item_advice.xml.flat",
-        "source": "com.ecosense.app-main-47:/layout/item_advice.xml"
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\drawable_ic_plan.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\drawable\\ic_plan.xml"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/drawable_bg_chip_white.xml.flat",
-        "source": "com.ecosense.app-main-47:/drawable/bg_chip_white.xml"
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\anim_slide_out_left.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\anim\\slide_out_left.xml"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/layout_item_chat_choice.xml.flat",
-        "source": "com.ecosense.app-main-47:/layout/item_chat_choice.xml"
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\drawable_ic_refresh.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\drawable\\ic_refresh.xml"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/drawable_bg_circle.xml.flat",
-        "source": "com.ecosense.app-main-47:/drawable/bg_circle.xml"
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\color_chip_bg.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\color\\chip_bg.xml"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/layout_activity_plan.xml.flat",
-        "source": "com.ecosense.app-main-47:/layout/activity_plan.xml"
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\layout_item_symptom.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\layout\\item_symptom.xml"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/drawable_bg_pill.xml.flat",
-        "source": "com.ecosense.app-main-47:/drawable/bg_pill.xml"
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\drawable_bg_glass.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\drawable\\bg_glass.xml"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/drawable_bg_chip_alert.xml.flat",
-        "source": "com.ecosense.app-main-47:/drawable/bg_chip_alert.xml"
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\layout_view_bottom_nav.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\layout\\view_bottom_nav.xml"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/drawable_ic_search.xml.flat",
-        "source": "com.ecosense.app-main-47:/drawable/ic_search.xml"
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\layout_item_chat_action.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\layout\\item_chat_action.xml"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/layout_item_symptom.xml.flat",
-        "source": "com.ecosense.app-main-47:/layout/item_symptom.xml"
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\drawable_bg_circle.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\drawable\\bg_circle.xml"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/layout_item_chat_action.xml.flat",
-        "source": "com.ecosense.app-main-47:/layout/item_chat_action.xml"
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\drawable_ic_back_circle.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\drawable\\ic_back_circle.xml"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/drawable_ic_leaf.xml.flat",
-        "source": "com.ecosense.app-main-47:/drawable/ic_leaf.xml"
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\anim_fade_in.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\anim\\fade_in.xml"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/drawable_ic_trend.xml.flat",
-        "source": "com.ecosense.app-main-47:/drawable/ic_trend.xml"
+        "merged": "com.ecosense.app-debug-45:/drawable_ic_launcher_monochrome.xml.flat",
+        "source": "com.ecosense.app-main-47:/drawable/ic_launcher_monochrome.xml"
+    },
+    {
+        "merged": "com.ecosense.app-debug-45:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "com.ecosense.app-main-47:/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\drawable_bg_hero.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\drawable\\bg_hero.xml"
+    },
+    {
+        "merged": "com.ecosense.app-debug-45:/mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "com.ecosense.app-main-47:/mipmap-mdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\drawable_bg_header_curve.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\drawable\\bg_header_curve.xml"
+    },
+    {
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\drawable_bg_circle_tile.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\drawable\\bg_circle_tile.xml"
+    },
+    {
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\drawable_ic_delete.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\drawable\\ic_delete.xml"
+    },
+    {
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\drawable_ic_trend.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\drawable\\ic_trend.xml"
+    },
+    {
+        "merged": "com.ecosense.app-debug-45:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "com.ecosense.app-main-47:/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\drawable_bg_bubble_user.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\drawable\\bg_bubble_user.xml"
+    },
+    {
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\layout_item_forecast.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\layout\\item_forecast.xml"
+    },
+    {
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\anim_slide_up_fade.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\anim\\slide_up_fade.xml"
+    },
+    {
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\drawable_ic_arrow_ne.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\drawable\\ic_arrow_ne.xml"
+    },
+    {
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\drawable_ic_mountains.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\drawable\\ic_mountains.xml"
+    },
+    {
+        "merged": "com.ecosense.app-debug-45:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "com.ecosense.app-main-47:/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\color_chip_text.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\color\\chip_text.xml"
+    },
+    {
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\anim_fade_out.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\anim\\fade_out.xml"
+    },
+    {
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\anim_slide_in_right.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\anim\\slide_in_right.xml"
+    },
+    {
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\anim_slide_in_left.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\anim\\slide_in_left.xml"
+    },
+    {
+        "merged": "com.ecosense.app-debug-45:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.ecosense.app-main-47:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\drawable_bg_sky.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\drawable\\bg_sky.xml"
+    },
+    {
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\drawable_bg_tile.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\drawable\\bg_tile.xml"
     },
     {
         "merged": "com.ecosense.app-debug-45:/drawable_ic_launcher.xml.flat",
         "source": "com.ecosense.app-main-47:/drawable/ic_launcher.xml"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/drawable_ic_back_circle.xml.flat",
-        "source": "com.ecosense.app-main-47:/drawable/ic_back_circle.xml"
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\drawable_ic_back.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\drawable\\ic_back.xml"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/anim_slide_out_left.xml.flat",
-        "source": "com.ecosense.app-main-47:/anim/slide_out_left.xml"
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\layout_item_advice.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\layout\\item_advice.xml"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/layout_item_log_grid.xml.flat",
-        "source": "com.ecosense.app-main-47:/layout/item_log_grid.xml"
+        "merged": "com.ecosense.app-debug-45:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.ecosense.app-main-47:/mipmap-anydpi-v26/ic_launcher_round.xml"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/layout_view_bottom_nav.xml.flat",
-        "source": "com.ecosense.app-main-47:/layout/view_bottom_nav.xml"
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\layout_activity_plan.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\layout\\activity_plan.xml"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/drawable_ic_settings.xml.flat",
-        "source": "com.ecosense.app-main-47:/drawable/ic_settings.xml"
+        "merged": "com.ecosense.app-debug-45:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "com.ecosense.app-main-47:/mipmap-xhdpi/ic_launcher.png"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/drawable_ic_refresh.xml.flat",
-        "source": "com.ecosense.app-main-47:/drawable/ic_refresh.xml"
+        "merged": "com.ecosense.app-debug-45:/mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "com.ecosense.app-main-47:/mipmap-xhdpi/ic_launcher_round.png"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/drawable_bg_hero.xml.flat",
-        "source": "com.ecosense.app-main-47:/drawable/bg_hero.xml"
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\layout_activity_chat.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\layout\\activity_chat.xml"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/drawable_bg_sky.xml.flat",
-        "source": "com.ecosense.app-main-47:/drawable/bg_sky.xml"
+        "merged": "com.ecosense.app-debug-45:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.ecosense.app-main-47:/drawable/ic_launcher_foreground.xml"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/drawable_ic_mountains.xml.flat",
-        "source": "com.ecosense.app-main-47:/drawable/ic_mountains.xml"
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\layout_activity_history.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\layout\\activity_history.xml"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/anim_fade_in.xml.flat",
-        "source": "com.ecosense.app-main-47:/anim/fade_in.xml"
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\layout_activity_login.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\layout\\activity_login.xml"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/layout_activity_prediction.xml.flat",
-        "source": "com.ecosense.app-main-47:/layout/activity_prediction.xml"
+        "merged": "com.ecosense.app-debug-45:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "com.ecosense.app-main-47:/mipmap-hdpi/ic_launcher.png"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/drawable_bg_tile.xml.flat",
-        "source": "com.ecosense.app-main-47:/drawable/bg_tile.xml"
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\layout_item_log_grid.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\layout\\item_log_grid.xml"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/layout_activity_settings.xml.flat",
-        "source": "com.ecosense.app-main-47:/layout/activity_settings.xml"
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\drawable_ic_leaf.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\drawable\\ic_leaf.xml"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/drawable_bg_circle_tile.xml.flat",
-        "source": "com.ecosense.app-main-47:/drawable/bg_circle_tile.xml"
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\layout_activity_settings.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\layout\\activity_settings.xml"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/drawable_bg_header_curve.xml.flat",
-        "source": "com.ecosense.app-main-47:/drawable/bg_header_curve.xml"
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\drawable_bg_toolbar.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\drawable\\bg_toolbar.xml"
     },
     {
-        "merged": "com.ecosense.app-debug-45:/layout_activity_history.xml.flat",
-        "source": "com.ecosense.app-main-47:/layout/activity_history.xml"
-    },
-    {
-        "merged": "com.ecosense.app-debug-45:/drawable_bg_bubble_bot.xml.flat",
-        "source": "com.ecosense.app-main-47:/drawable/bg_bubble_bot.xml"
-    },
-    {
-        "merged": "com.ecosense.app-debug-45:/drawable_ic_heart.xml.flat",
-        "source": "com.ecosense.app-main-47:/drawable/ic_heart.xml"
+        "merged": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-debug-45:\\layout_activity_prediction.xml.flat",
+        "source": "C:\\Users\\MSI\\.gradle\\daemon\\8.9\\com.ecosense.app-main-47:\\layout\\activity_prediction.xml"
     }
 ]
