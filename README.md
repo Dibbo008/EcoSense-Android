@@ -11,26 +11,6 @@ EcoSense tracks air quality and weather where you are, turns the numbers into cl
 
 ---
 
-## Table of contents
-
-1. [Overview](#1-overview)
-2. [Features](#2-features)
-3. [Screens](#3-screens)
-4. [Tech stack](#4-tech-stack)
-5. [Architecture](#5-architecture)
-6. [Core algorithms](#6-core-algorithms)
-7. [Android components](#7-android-components)
-8. [Getting started](#8-getting-started)
-9. [Firebase setup](#9-firebase-setup)
-10. [Permissions](#10-permissions)
-11. [Demo guide](#11-demo-guide)
-12. [Data and privacy](#12-data-and-privacy)
-13. [Known limitations](#13-known-limitations)
-14. [Roadmap](#14-roadmap)
-15. [Credits and licence](#15-credits-and-licence)
-
----
-
 ## 1. Overview
 
 Most weather apps show conditions. EcoSense answers the next question: **"What should I do about it?"**
