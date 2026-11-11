@@ -11,6 +11,26 @@ EcoSense tracks air quality and weather where you are, turns the numbers into cl
 
 ---
 
+## Table of contents
+
+1. [Overview](#1-overview)
+2. [Features](#2-features)
+3. [Screens](#3-screens)
+4. [Tech stack](#4-tech-stack)
+5. [Architecture](#5-architecture)
+6. [Core algorithms](#6-core-algorithms)
+7. [Android components](#7-android-components)
+8. [Getting started](#8-getting-started)
+9. [Firebase setup](#9-firebase-setup)
+10. [Permissions](#10-permissions)
+11. [Demo guide](#11-demo-guide)
+12. [Data and privacy](#12-data-and-privacy)
+13. [Known limitations](#13-known-limitations)
+14. [Roadmap](#14-roadmap)
+15. [Credits and licence](#15-credits-and-licence)
+
+---
+
 ## 1. Overview
 
 Most weather apps show conditions. EcoSense answers the next question: **"What should I do about it?"**
@@ -74,6 +94,7 @@ Most weather apps show conditions. EcoSense answers the next question: **"What s
 ### Experience
 - Sky-and-glass visual design with a floating bottom navigation bar, light and dark themes, and smooth screen transitions.
 - Daily eco-tip, quick one-tap symptom logging from the dashboard, and a share-report action.
+- **Profile photo**: pick a picture from the gallery in Settings (system Photo Picker, no storage permission needed). It is cropped to a circle and shown in Settings and on the dashboard. Remove it at any time.
 
 ---
 
@@ -88,7 +109,7 @@ Most weather apps show conditions. EcoSense answers the next question: **"What s
 | **Symptom Chat** | Guided chat with advice |
 | **History** | Search, filter, view modes, CSV export, cloud sync |
 | **Trend Prediction** | Regression chart, forecast and insight |
-| **Settings** | Alert limits, interval, health profile, notifications, dark mode, restore, logout |
+| **Settings** | Profile photo, alert limits, interval, health profile, notifications, dark mode, restore, logout |
 
 > Add screenshots under `docs/screenshots/` and reference them here.
 
@@ -138,7 +159,7 @@ EcoSense
                                       SpikeDetector, RegressionCalculator, SystemMonitor,
                                       AlertChecker, NotificationHelper, PermissionHelper,
                                       LocationHelper, CsvExporter, SymptomExporter,
-                                      NavHelper, Prefs, LogFormatter, EcoTips, SymptomTypes
+                                      NavHelper, Prefs, ProfilePhoto, LogFormatter, EcoTips, SymptomTypes
 ```
 
 **Data flow**
@@ -203,6 +224,7 @@ Maps selected symptoms, strength, duration, notes, current air and profile to a 
 | **Lifecycle** | `onStart`/`onStop` for receiver and monitor registration, `onPause` for state saving, `onSaveInstanceState` for UI state |
 | **Lists** | `RecyclerView` (`ListAdapter` + `DiffUtil`, `LinearLayoutManager` and `GridLayoutManager`, two view types), `ListView` with `ArrayAdapter` and a ViewHolder |
 | **Layouts** | ConstraintLayout, RelativeLayout, LinearLayout, ScrollView |
+| **Media / picture storage** | Profile photo chosen with the system Photo Picker (`PickVisualMedia`), down-sampled, EXIF-rotated, centre-cropped to 512 px and saved as JPEG in the app's private storage (`ProfilePhoto`) |
 | **Networking** | Retrofit + Gson (JSON) over HTTPS |
 
 ---
@@ -320,6 +342,7 @@ A suggested order for a live demonstration:
 - The reverse-geocoded place name is stored locally for display.
 - Weather data comes from Open-Meteo; coordinates are sent to that service with each request.
 - The symptom diary is **not** uploaded unless you export it yourself.
+- The profile photo is stored only in the app's private storage on the device. It is never uploaded and is removed when the app data is cleared.
 
 ---
 
@@ -330,6 +353,7 @@ A suggested order for a live demonstration:
 - **Pattern results are correlations**, not proof of cause.
 - **Symptom chat is rule-based**. It does not understand free text beyond red-flag keywords and cannot diagnose.
 - **Open-Meteo** air-quality values are model-based estimates for a grid cell, not a measurement at your exact spot.
+- **Profile photo** is local to the device (not synced through Firebase), so it will not follow the account to another phone.
 - **Accessibility and localisation**: UI text is currently in English and mostly hard-coded in layouts rather than `strings.xml`.
 - **Not implemented**: View Binding (the project uses `findViewById`), XML parsing (JSON only), reading device contacts or media through system content providers, multi-city comparison, home-screen widget.
 - The app has not been exhaustively tested across all devices and Android versions.
