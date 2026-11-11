@@ -357,5 +357,5 @@ A suggested order for a live demonstration:
 - UI toolkit: Google **Material Components**. Cloud services: **Firebase**.
 - Icons: Material Design icons (Apache 2.0). The EcoSense logo was created for this project.
 
-**Author:** *Your name, student ID, course*
-**Licence:** *Add a licence of your choice (for example MIT) before publishing.*
+**Author:** *Dibbo Adhikary, CSE-KUET*
+
